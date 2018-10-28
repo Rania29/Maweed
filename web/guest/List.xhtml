@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGuestTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGuestEmpty}" rendered="#{guestController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{guestController.items.rowCount > 0}">
+                    <h:outputText value="#{guestController.pagination.pageFirstItem + 1}..#{guestController.pagination.pageLastItem + 1}/#{guestController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{guestController.previous}" value="#{bundle.Previous} #{guestController.pagination.pageSize}" rendered="#{guestController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{guestController.next}" value="#{bundle.Next} #{guestController.pagination.pageSize}" rendered="#{guestController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{guestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_dob}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dob}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_password}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.password}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_phone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.phone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_genderId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.genderId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{guestController.prepareView}" value="#{bundle.ListGuestViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{guestController.prepareEdit}" value="#{bundle.ListGuestEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{guestController.destroy}" value="#{bundle.ListGuestDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{guestController.prepareCreate}" value="#{bundle.ListGuestCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGuestIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

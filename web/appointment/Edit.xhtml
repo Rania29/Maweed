@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAppointmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{appointmentController.selected.id}" title="#{bundle.EditAppointmentTitle_id}" required="true" requiredMessage="#{bundle.EditAppointmentRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_dob}" for="dob" />
+                    <h:inputText id="dob" value="#{appointmentController.selected.dob}" title="#{bundle.EditAppointmentTitle_dob}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{appointmentController.selected.description}" title="#{bundle.EditAppointmentTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.EditAppointmentTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.EditAppointmentTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.EditAppointmentTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_doctorgenderId}" for="doctorgenderId" />
+                    <h:selectOneMenu id="doctorgenderId" value="#{appointmentController.selected.doctorgenderId}" title="#{bundle.EditAppointmentTitle_doctorgenderId}" >
+                        <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_genderId}" for="genderId" />
+                    <h:selectOneMenu id="genderId" value="#{appointmentController.selected.genderId}" title="#{bundle.EditAppointmentTitle_genderId}" >
+                        <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_hospitalId}" for="hospitalId" />
+                    <h:selectOneMenu id="hospitalId" value="#{appointmentController.selected.hospitalId}" title="#{bundle.EditAppointmentTitle_hospitalId}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_morningoreveningId}" for="morningoreveningId" />
+                    <h:selectOneMenu id="morningoreveningId" value="#{appointmentController.selected.morningoreveningId}" title="#{bundle.EditAppointmentTitle_morningoreveningId}" >
+                        <f:selectItems value="#{shiftController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{appointmentController.update}" value="#{bundle.EditAppointmentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAppointmentViewLink}"/>
+                <br />
+                <h:commandLink action="#{appointmentController.prepareList}" value="#{bundle.EditAppointmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAppointmentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

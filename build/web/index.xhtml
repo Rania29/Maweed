@@ -1,9 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE xhtml PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xxhtml1/DTD/xxhtml1-transitional.dtd">
 <xhtml xmlns="http://www.w3.org/1999/xxhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/xhtml">
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Maweed</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
@@ -52,19 +55,17 @@
 
                 <div class="search-box">
                     <div class="center-search">
-                        <form class="form-style">
-                            <select class="select-style">
-                                <option value="">All Areas</option>
-                                <option value="">Old Rayyan</option>
-                                <option value="">Doha</option>
-                                <option value="">Al Sadd</option>
-                            </select>
-                            <input type="text" placeholder="Search by name or service" name="search"/>
-                            <a href="search.xhtml" class="hidden-link1">Search</a>
-                            <a href="search.xhtml" class="hidden-link">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name or service" id="search"/>
+                            <h:commandLink value="Search" class="hidden-link1"/>
+                            <h:commandLink class="hidden-link">
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </a>
-                        </form>
+                            </h:commandLink>
+                        </h:form>
+
                     </div>
                 </div>
             </header><!--Header End-->
@@ -106,8 +107,8 @@
                 <div class="cat">
                     <div class="cat-item">
                         <a href="category.xhtml">
-                        <img src="resources/images/stethoscope.png" alt=""/><br />
-                        <span>Medicine</span></a>
+                            <img src="resources/images/stethoscope.png" alt=""/><br />
+                            <span>Medicine</span></a>
                     </div>
                     <div class="cat-item">
                         <a href="categories-xhtml/Cardiovascular.xhtml">
@@ -225,6 +226,57 @@
         </div><!--Wrapper end-->
 
 
+        <br />
+        <h:link outcome="/appointment/List" value="Show All Appointment Items"/>
+        <br />
+        <h:link outcome="/area/List" value="Show All Area Items"/>
+        <br />
+        <h:link outcome="/category/List" value="Show All Category Items"/>
+        <br />
+        <h:link outcome="/clinic/List" value="Show All Clinic Items"/>
+        <br />
+        <h:link outcome="/clinicservice/List" value="Show All Clinicservice Items"/>
+        <br />
+        <h:link outcome="/daysofweek/List" value="Show All Daysofweek Items"/>
+        <br />
+        <h:link outcome="/doctor/List" value="Show All Doctor Items"/>
+        <br />
+        <h:link outcome="/gender/List" value="Show All Gender Items"/>
+        <br />
+        <h:link outcome="/groupauth/List" value="Show All Groupauth Items"/>
+        <br />
+        <h:link outcome="/guest/List" value="Show All Guest Items"/>
+        <br />
+        <h:link outcome="/hospital/List" value="Show All Hospital Items"/>
+        <br />
+        <h:link outcome="/hospitalimage/List" value="Show All Hospitalimage Items"/>
+        <br />
+        <h:link outcome="/insurance/List" value="Show All Insurance Items"/>
+        <br />
+        <h:link outcome="/sequence/List" value="Show All Sequence Items"/>
+        <br />
+        <h:link outcome="/servicelist/List" value="Show All Servicelist Items"/>
+        <br />
+        <h:link outcome="/shift/List" value="Show All Shift Items"/>
+        <br />
+        <h:link outcome="/userauth/List" value="Show All Userauth Items"/>
     </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </xhtml>
 

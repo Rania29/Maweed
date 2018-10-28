@@ -99,7 +99,7 @@ public class Area implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.domain.Area[ id=" + id + " ]";
+        return name;
     }
     
 }

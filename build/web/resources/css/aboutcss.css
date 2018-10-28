@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 13, 2018, 8:36:37 PM
+    Author     : Nooshi
+*/
+.about-us{
+    display:block;
+    width: 90%;
+    height: auto;
+    background-color: #D7D0CC;
+    margin: 0 auto;
+    text-align: center;
+}
+.scnd-div h1{
+    background-color: inherit;
+    color: black;
+    float: left;
+}
+.personal-img{
+    width: 50%;
+    height: 350px;
+    background-color: #4CAF50;
+    float: left;
+}
+.scnd-div{
+    display: inline-block;
+    background-color: #9C70A5;
+    width: 50%;
+    float: left;
+    color: black;
+    padding: 10px;
+}
+.thrd-div{
+    background-color: #55A6D7;
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+.frth-div{
+    width: 50%;
+    background-color: #99d8f7;
+    padding: 10px;
+}
+.footer{
+    clear: both;
+}

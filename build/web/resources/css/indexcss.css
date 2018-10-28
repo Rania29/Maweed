@@ -1,0 +1,839 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 6, 2018, 12:29:48 PM
+    Author     : Nooshi
+*/
+/**Body*/
+*, *::before, *::after{
+    box-sizing: border-box;;
+}
+body, html{
+    background-color: #F2F3F7;
+    background-repeat: no-repeat;
+    min-width: 320px;
+    width: auto !important;
+    width: 100%;
+    font-family: arial, Helvetica, sans-serif; 
+    line-height: 45px;
+    direction: ltr;
+}
+/**----------------Hamburger menu and button-------------------**/
+
+.container {
+    display: none;
+    padding: 25px 20px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #55A6D7;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+.container{
+    display: none;
+}
+.menu{
+    display: none;
+}
+
+
+/**----------------Hamburger menu and button end-------------------**/
+
+.top-div{
+    height: 45px;
+    width: 100%;
+    background-color: #445268;
+}
+.left-div{
+    float: left;
+    width: 50%;
+    padding-left: 50px;
+}
+.separator{
+    color: #F2F3F7;
+}
+
+.right-div{
+    float: right;
+    width: 50%;
+    padding-right: 50px;
+    text-align: right;
+}
+.top-div a{
+    text-decoration: none;
+    color: #F2F3F7;
+}
+.top-div a:hover{
+    text-decoration: underline;
+}
+/**header div**/
+.header-top{
+    width: 100%;
+    height: 100px;
+    clear: both;
+}
+/**.menu-icon{
+    display: none;
+}**/
+/**logo image**/
+div.logo{
+    float: left;
+    width: 40%;
+    height: inherit;
+}
+.logo img{
+    /*margin: 0px 40px;*/
+    width: 220px; 
+    height: 69px;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-left: 45px;
+}
+
+/**search form div**/
+.search-box{
+    float: right;
+    width: 60%;
+    height: inherit;
+}
+.hidden-link{
+    display: none;
+}
+.form-style{
+    overflow: hidden;
+    float: left;
+}
+div.center-search{
+    height: available;
+    display: inline-block;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 25px;
+    float: right;
+}
+/**style search box**/
+.form-style input[type='text']{
+    border: 1px solid #445268;
+    outline: 0;
+    box-shadow: none;
+    font-size: 15px;
+    padding-left: 5px;
+    border-radius: 0 5px 5px 0 ;
+    color: #666666;
+    height: 40px;
+    width: 320px;
+    background-position: right ; 
+}
+.select-style{
+    width: 100px;
+    height: 40px;
+    font-size: 12px;
+    margin-right: -5px;
+    border-radius:  5px 0 0 5px ;
+}
+
+.hidden-link1 {
+    display: inline-block;
+    margin:  auto;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    background-color: #55A6D7;
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+/**nav bar style*/
+.navbar{
+    clear: left;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-top: 1px solid #D7D0CC;
+    border-bottom: 1px solid #D7D0CC;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+    /**box-shadow: 5px 1px 18px #888888;**/
+}
+/**Un ordered list in the navbar*/
+.navbar ul{
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px ;
+}
+/**list items in navbar*/
+.navbar ul li{
+    display: inline-block;
+    list-style: none;
+    position: relative;
+}
+
+/**anchor in navbar*/
+.navbar ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    height: 70px;
+    margin: 0 auto;
+    vertical-align: middle;
+    padding: 14px 16px;
+    text-align: center;
+    color: #013069;
+}
+/**hover over menu items in navbar*/
+.navbar ul li a:hover {
+    color: #55A6D7;
+    cursor: pointer;
+    border-bottom: 5px solid #55A6D7;
+}
+.dropcat{
+    color: #445268;
+}
+/**drop down un ordered list*/
+.navbar ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #55A6D7;
+    border-top: none;
+    text-align: left;
+    margin-top: 10px;
+    border-radius: 0px 0px 5px 5px;
+    z-index: 1;
+}
+/**when hover over menu item ,show the list*/
+.navbar ul li:hover ul {
+    display: block;
+
+}
+/**style drop down list elemnts*/
+.navbar ul li ul li {
+    width: 180px;
+    height: auto;
+}
+/**style anchor inside drop down list*/
+.navbar ul li ul li a{
+    padding: 8px 15px;
+}
+div.dropcat li:hover{
+    background-color: red;
+}
+/**
+.navbar ul li ul li:hover{
+    background-color: #5796c8;
+    text-decoration: none;
+}**/
+
+/* unvisited link */
+.navbar ul li ul li a:link {
+    color: #ffffff;
+}
+/**change color for visited links**/
+.navbar ul li ul li a:visited { 
+    color: #ffffff;
+}
+/**Adv div**/
+.advrtisment{
+    clear: both;
+    width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+    height: 520px;
+    margin-bottom: 15px;
+}
+.item1{
+    float: left;
+    height: 525px;
+    width: 49.7vw;
+    border: 1px solid #D7D0CC;
+}
+.item1 img{
+    width:100%;
+    height:100%;
+    margin:auto;
+    display: block;
+}
+.item2{
+    float: right;
+    height: 260px;
+    width: 20vw;
+    margin-bottom: 5px;
+    border: 1px solid #D7D0CC;
+}
+.item2 img{
+    width:100%;
+    height:100%;
+    margin:auto;
+    display: block;
+}
+.item3{
+    float: right;
+    height: 260px;
+    width: 20vw;
+    border: 1px solid #D7D0CC;
+}
+.item3 img{
+    width:100%;
+    height:100%;
+    margin:auto;
+    display: block;
+}
+
+/*Headers Catigories**/
+h1{
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 35px;
+    color: #ffffff;
+    background-color: #55A6D7;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+/**Ctigories style*/
+.cat{
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    height: auto;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.cat-item {
+    box-sizing: border-box;
+    margin : 0 2px;
+    padding: 8px;
+    text-align: center;  
+}
+.cat-item a{
+    text-decoration: none;
+    color: #013069; 
+    font-size: 15px;
+    line-height: 20px;
+}
+.cat-item a:hover {
+    color: #55A6D7;
+    text-decoration: underline ;
+}
+/**footer**/
+footer{
+    width: 100%;
+    height: 150px;
+    background-color: #445268;
+    font-size: 18px;
+    color: #e9eaea;
+}
+.upper-footer{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #F2F3F7;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-ul  li{
+    display: inline-block;
+}
+.footer-ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size:  15px;
+}
+.footer-ul li a:hover{
+    text-decoration: underline;
+}
+.lower-footer{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1px;
+}
+div.lower-footer h2{
+    background-color: inherit;
+}
+.lower-footer h6{
+    font-size: 12px;
+}
+
+
+
+/**Media Queries*/
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+    .header-top{
+        width: 100%;
+        height: 85px;
+        margin-bottom: 1px;
+    }
+    .left-div{
+        padding-left: 20px;
+    }
+
+    .right-div{
+        padding-right: 20px;
+    }
+    /**
+       div.menu-icon{
+           display: flex;
+           float: left;
+           width: 20%;
+           height: inherit;
+       }
+      
+       .menu-icon{
+           justify-content: center;
+           align-items: center;
+       }**/
+
+    div.container {
+        background-color: inherit;
+        width: 20%;
+        float: left;
+        height: 100%;
+        display:block;
+        cursor: pointer;
+    }
+    nav.menu{
+        width: 50%;
+    }
+    .item_menu {
+        clear: both;
+        background-color: #F2F3F7;
+        text-align: center;
+        width:100%;
+        height: auto;
+        text-decoration: none;
+        color: #013069;
+        padding: 2px;
+        display: block;
+        border-bottom: 1px solid gray;
+    }
+    .item_menu:hover{
+        background-color: #55A6D7;
+        color: white;
+    }
+
+    /**div of Logo*/
+    div.logo{
+        float: right;
+        display: flex;
+        width: 80%;
+        height: inherit;
+        text-align: center;
+
+    }
+    /**Logo image*/
+    .logo img{
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 69px;
+    }
+    div.search-box{
+        clear: both;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 65px;
+        margin: auto;
+    }
+    div.center-search{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 10px;
+        margin-left: auto;
+        margin-right:  auto;
+        text-align: center;
+        background-color: #445268;
+    }
+
+    .form-style{
+        margin: 0 auto;
+        display: inline-block;
+        overflow: hidden;
+        width: 100%;
+        margin-right: 3px;
+        /**padding: 10px 20px;**/
+    }
+    .form-style input[type='text']{
+        width: 200px;
+        border: 1px solid gray;
+        font-size: 16px;
+    }
+    .select-style{
+        width: 80px;
+    }
+    .hidden-link1{
+        display: none;
+    }
+    .hidden-link{
+        display: inline-block;
+        margin:  auto;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        cursor: pointer;
+        background-color: #55A6D7;
+        border-radius: 5px;
+        height: 40px;
+    }
+    .search-icon{
+        padding: 5px;
+    }
+
+
+    .select-style{
+        width: 75px;
+    }
+    .dropbtn{
+        border: 1px solid #cccccc;
+    }
+
+    .navbar{
+        display: none;
+    }
+    .advrtisment{
+        width: 95vw;
+        height: 600px;
+        margin-bottom: 5px;
+    }
+    .item1{
+        float: left;
+        height: 300px;
+        width: 95vw;
+        margin-bottom: 5px;
+    }
+    .item2{
+        float: left;
+        height: 150px;
+        width: 95vw;
+        margin-bottom: 5px;
+    }
+    .item3{
+        float:left;
+        height: 150px;
+        width: 95vw;
+        margin-bottom: 8px;
+    }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media screen and (min-width: 481px) and (max-width: 599px) {
+
+    .header-top{
+        margin-top: 3px;
+        width: 100%;
+        height: 100px;
+    }
+    /**
+    div.menu-icon{
+        display: flex;
+        float: left;
+        width: 20%;
+        height: inherit;
+    }
+    
+    .menu-icon{
+        justify-content: center;
+        align-items: center;
+    }**/
+
+    div.container {
+        background-color: inherit;
+        width: 20%;
+        float: left;
+        height: 100%;
+        display:block;
+        cursor: pointer;
+    }
+    nav.menu{
+        width: 50%;
+    }
+    .item_menu {
+        clear: both;
+        background-color: #F2F3F7;
+        text-align: center;
+        width:100%;
+        height: auto;
+        text-decoration: none;
+        color: #013069;
+        padding: 2px;
+        display: block;
+        border-bottom: 1px solid gray;
+    }
+    .item_menu:hover{
+        background-color: #55A6D7;
+        color: white;
+    }
+    /**div of Logo*/
+    div.logo{
+        float: right;
+        display: flex;
+        width: 80%;
+        height: inherit;
+        text-align: center;
+
+    }
+    /**Logo image*/
+    .logo img{
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 69px;
+    }
+    
+    div.search-box{
+        clear: both;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 65px;
+        margin: auto;
+        background-color:#445268;
+    }
+    div.center-search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 10px;
+        margin-left: auto;
+        margin-right:  auto;
+        text-align: center;
+    }
+    .form-style{
+        margin: 0 auto;
+        display: inline-block;
+        overflow: hidden;
+        /**padding: 10px 20px;**/
+    }
+    .form-style input[type='text']{
+        width: 280px;
+        border: 1px solid gray;
+        font-size: 16px;
+    }
+    .form-style input[type='submit']{
+        width: 70px;
+        border: 2px solid #55A6D7;
+    }
+    .dropbtn{
+        border: 1px solid #cccccc;
+    }
+    .navbar{
+        display: none;
+    }
+    .advrtisment{
+        width: 95vw;
+        height: 600px;
+        margin-bottom: 5px;
+    }
+    .item1{
+        float: left;
+        height: 300px;
+        width: 95vw;
+        margin-bottom: 5px;
+    }
+    .item2{
+        float: left;
+        height: 150px;
+        width: 95vw;
+        margin-bottom: 5px;
+    }
+    .item3{
+        float:left;
+        height: 150px;
+        width: 95vw;
+        margin-bottom: 8px;
+    }
+}
+
+
+
+
+/**Tablet, Ipad (Landscape) and (portrait)**/
+
+@media screen and (min-width: 600px) and (max-width: 1024px){
+
+    div.logo-header{
+        height: 90px;
+    }
+    /**
+   div.menu-icon{
+       display: flex;
+       float: left;
+       width: 20%;
+       height: inherit;
+   }
+   
+   .menu-icon{
+       justify-content: center;
+       align-items: center;
+   }**/
+
+    div.container {
+        background-color: inherit;
+        width: 20%;
+        float: left;
+        height: 100%;
+        display:block;
+        cursor: pointer;
+        padding: 25px 40px;
+    }
+    nav.menu{
+        width: 50%;
+    }
+    .item_menu {
+        clear: both;
+        background-color: #F2F3F7;
+        text-align: center;
+        width:100%;
+        height: auto;
+        text-decoration: none;
+        color: #013069;
+        padding: 2px;
+        display: block;
+        border-bottom: 1px solid gray;
+    }
+    .item_menu:hover{
+        background-color: #55A6D7;
+        color: white;
+    }
+    /**div of Logo*/
+    div.logo{
+        float: right;
+        width: 40%;
+        height: inherit;
+
+    }
+    .logo img{
+        /*margin: 0px 40px;*/
+        width: 220px; 
+        height: 69px;
+        vertical-align: middle;
+        margin-top: 15px;
+        margin-left: 45px;
+    }
+
+    div.search-box{
+        clear: both;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 65px;
+        margin: auto;
+        background-color: #445268;
+    }
+    div.center-search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 10px;
+        margin-left: auto;
+        margin-right:  auto;
+        text-align: center;
+    }
+    .form-style{
+        margin: 0 auto;
+        display: inline-block;
+        overflow: hidden;
+    }
+    .form-style input[type='text']{
+        width: 280px;
+        border: 1px solid gray;
+        font-size: 16px;
+    }
+    .form-style input[type='submit']{
+        width: 70px;
+        border: 2px solid #55A6D7;
+    }
+    .dropbtn{
+        border: 1px solid #cccccc;
+    }
+    .navbar{
+        display: none;
+    }
+    .advrtisment{
+        width: 95vw;
+        height: 605px;
+    }
+    .item1{
+        float: left;
+        height: 300px;
+        width: 95vw;
+        border: 1px solid #D7D0CC;
+        margin-bottom: 5px;
+    }
+    .item1 img{
+        width:100%;
+        height:100%;
+        margin:auto;
+        display: block;
+    }
+    .item2{
+        float: left;
+        height: 300px;
+        width: 59vw;
+        margin-right: 5px;
+        border: 1px solid #D7D0CC;
+    }
+    .item2 img{
+        width:100%;
+        height:100%;
+        margin:auto;
+        display: block;
+    }
+    .item3{
+        float: right;
+        height: 300px;
+        width: 35vw;
+        border: 1px solid #D7D0CC;
+    }
+    .item3 img{
+        width:100%;
+        height:100%;
+        margin:auto;
+        display: block;
+    }
+}
+
+/**
+@media only screen and (min-width: 320px) and (max-width: 479px){ ... }
+
+@media only screen and (min-width: 480px) and (max-width: 767px){ ... }
+
+@media only screen and (min-width: 768px) and (max-width: 991px){ ... }**/

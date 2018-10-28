@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>نتائج البحث</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/search-ar-css.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/javascript/hamburger_menu.js" type="text/javascript"></script>
+    </h:head>
+    <h:body>
+        <div class="top-div">
+            <div class="left-div">
+                <a href="search_ar.xhtml">عربي</a>
+                <a class="separator">|</a>
+                <a href="search.xhtml">English</a>
+            </div>
+            <div class="right-div">
+                <a href="signin_ar.xhtml">دخول</a>
+                <a class="separator">|</a>
+                <a href="registration_ar.xhtml">التسجيل</a>
+            </div>
+
+        </div>
+        <header class="header-top">
+            <!--<div class="menu-icon">
+                <a href="index.xhtml"><img src="resources/images/menu.png"  alt=""/></a>
+            </div>-->
+            <div class="logo">
+                <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+            </div> 
+             <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                
+                <nav id="myDropdown" class="menu">
+                    <a href="index_ar.xhtml" class="item_menu">الرئيسية</a>
+                    <a href="about_ar.html" class="item_menu">عن موعد</a>
+                    <a href="contact_ar.xhtml" class="item_menu">تواصل معنا</a>
+                    <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
+                </nav>
+
+            <div class="search-box">
+                    <div class="center-search">
+                        <form class="form-style">
+                            <select class="select-style">
+                                <option value="">المنطقة</option>
+                                <option value="">الريان القديم</option>
+                                <option value="">الدوحة</option>
+                                <option value="">السد</option>
+                            </select>
+                            <input type="text" placeholder="ابحث بإسم العيادة أو الخدمة" name="search"/>
+                            <a href="search.xhtml" class="hidden-link1">بحث</a>
+                            <a href="search.xhtml" class="hidden-link">
+                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </header><!--Header End-->
+
+            <nav class="navbar">
+                <ul>
+                    <li><a  href="index.xhtml">الرئيسية</a></li>
+                    <li><a href="#" style="color: #445268">الإقسام</a>
+                        <ul>
+                            <li><a href="categories-html/medical-care.xhtml">الرعاية الطبية</a></li>
+                            <li><a href="categories-html/heart.xhtml">قلب</a></li>
+                            <li><a href="categories-html/Obstetrics.xhtml">نساء وولادة</a></li>
+                            <li><a href="categories-html/Pediatrics.xhtml">أطفال</a></li>
+                            <li><a href="categories-html/beauty.xhtml">تجميل</a></li>
+                            <li><a href="categories-html/dentist.xhtml">أسنان</a></li>
+                            <li><a href="categories-html/dermatology.xhtml">جلدية</a></li>
+                            <li><a href="categories-html/Opthalmology.xhtml">عيون</a></li>
+                            <li><a href="categories-html/massage.xhtml">مساج</a></li>
+                            <li><a href="categories-html/Physiotherapy.xhtml">علاج فيزيائي</a></li>
+                            <li><a href="categories-html/weight-loss.xhtml">فقدان الوزن</a></li>
+                            <li><a href="categories-html/Special-Needs">احتياجات خاصة</a></li>
+                            <li><a href="categories-html/Veterinary.xhtml">بيطرية</a></li>
+                        </ul>
+                    </li>
+                    <li><a  href="About.xhtml">عن الموقع</a></li>
+                    <li><a  href="contact.xhtml">التواصل</a></li>
+                    <li><a  href="help.xhtml">مساعدة</a></li>
+                </ul>
+            </nav><!--Navigation bar End-->
+
+        <div class="main_div">
+            <h5>عرض نتائج البحث ل (نكتب هنا ماتم كتابته في مربع البحث)</h5>
+            <div class="result">
+                <div class="result_items">
+                    <div class="clnk-div">
+                        <a href="clinics_ar.xhtml">
+                            <img src="resources/images/gulf.jpg" alt=""/><br />
+                            <span class="clnk-name">مركز الخليج للأسناان</span><br />
+                            <span class="clnk-location">الهلال</span><br />
+                            <span class="clnk-star-rating">تقييم النجوم يوضع هنا</span>
+                        </a>
+                    </div>
+                    <div class="clnk-div">
+                        <a href="#">
+                            <img src="resources/images/gulf.jpg" alt=""/><br />
+                            <span class="clnk-name">الإسم</span><br />
+                            <span class="clnk-location">الموقع</span><br />
+                            <span class="clnk-star-rating">تقييم النجوم</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer>
+                <div class="upper-footer">
+                    <div class="footer-list">
+                        <ul class="footer-ul">
+                            <li>
+                                <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>
+                                <a class="separator">|</a>
+                            </li>
+                            <li>
+                                <a href="privacy-policy-ar.xhtml">سياسة الخصوصية</a>
+                                <a class="separator">|</a>
+                            </li>
+                            <li>
+                                <a href="help_ar.xhtml">المساعدة</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="lower-footer">
+                    <h2>Maweed</h2>
+                    <h6>Copyright 2018 | All rights reserved.</h6>
+                </div>
+            </footer>
+    </h:body>
+</html>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGuestTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{guestController.selected.id}" title="#{bundle.CreateGuestTitle_id}" required="true" requiredMessage="#{bundle.CreateGuestRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_dob}" for="dob" />
+                    <h:inputText id="dob" value="#{guestController.selected.dob}" title="#{bundle.CreateGuestTitle_dob}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{guestController.selected.email}" title="#{bundle.CreateGuestTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{guestController.selected.name}" title="#{bundle.CreateGuestTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{guestController.selected.password}" title="#{bundle.CreateGuestTitle_password}" />
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{guestController.selected.phone}" title="#{bundle.CreateGuestTitle_phone}" />
+                    <h:outputLabel value="#{bundle.CreateGuestLabel_genderId}" for="genderId" />
+                    <h:selectOneMenu id="genderId" value="#{guestController.selected.genderId}" title="#{bundle.CreateGuestTitle_genderId}" >
+                        <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{guestController.create}" value="#{bundle.CreateGuestSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{guestController.prepareList}" value="#{bundle.CreateGuestShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGuestIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

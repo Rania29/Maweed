@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateClinicserviceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateClinicserviceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{clinicserviceController.selected.id}" title="#{bundle.CreateClinicserviceTitle_id}" required="true" requiredMessage="#{bundle.CreateClinicserviceRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateClinicserviceLabel_discount}" for="discount" />
+                    <h:inputText id="discount" value="#{clinicserviceController.selected.discount}" title="#{bundle.CreateClinicserviceTitle_discount}" />
+                    <h:outputLabel value="#{bundle.CreateClinicserviceLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{clinicserviceController.selected.price}" title="#{bundle.CreateClinicserviceTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateClinicserviceLabel_clinicId}" for="clinicId" />
+                    <h:selectOneMenu id="clinicId" value="#{clinicserviceController.selected.clinicId}" title="#{bundle.CreateClinicserviceTitle_clinicId}" >
+                        <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateClinicserviceLabel_servicelistId}" for="servicelistId" />
+                    <h:selectOneMenu id="servicelistId" value="#{clinicserviceController.selected.servicelistId}" title="#{bundle.CreateClinicserviceTitle_servicelistId}" >
+                        <f:selectItems value="#{servicelistController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clinicserviceController.create}" value="#{bundle.CreateClinicserviceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{clinicserviceController.prepareList}" value="#{bundle.CreateClinicserviceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateClinicserviceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

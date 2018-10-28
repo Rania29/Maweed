@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateServicelistTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateServicelistLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{servicelistController.selected.id}" title="#{bundle.CreateServicelistTitle_id}" required="true" requiredMessage="#{bundle.CreateServicelistRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateServicelistLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{servicelistController.selected.image}" title="#{bundle.CreateServicelistTitle_image}" />
+                    <h:outputLabel value="#{bundle.CreateServicelistLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{servicelistController.selected.name}" title="#{bundle.CreateServicelistTitle_name}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{servicelistController.create}" value="#{bundle.CreateServicelistSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{servicelistController.prepareList}" value="#{bundle.CreateServicelistShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateServicelistIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

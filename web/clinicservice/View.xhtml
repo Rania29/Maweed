@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewClinicserviceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewClinicserviceLabel_id}"/>
+                    <h:outputText value="#{clinicserviceController.selected.id}" title="#{bundle.ViewClinicserviceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewClinicserviceLabel_discount}"/>
+                    <h:outputText value="#{clinicserviceController.selected.discount}" title="#{bundle.ViewClinicserviceTitle_discount}"/>
+                    <h:outputText value="#{bundle.ViewClinicserviceLabel_price}"/>
+                    <h:outputText value="#{clinicserviceController.selected.price}" title="#{bundle.ViewClinicserviceTitle_price}"/>
+                    <h:outputText value="#{bundle.ViewClinicserviceLabel_clinicId}"/>
+                    <h:outputText value="#{clinicserviceController.selected.clinicId}" title="#{bundle.ViewClinicserviceTitle_clinicId}"/>
+                    <h:outputText value="#{bundle.ViewClinicserviceLabel_servicelistId}"/>
+                    <h:outputText value="#{clinicserviceController.selected.servicelistId}" title="#{bundle.ViewClinicserviceTitle_servicelistId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clinicserviceController.destroyAndView}" value="#{bundle.ViewClinicserviceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewClinicserviceEditLink}"/>
+                <br />
+                <h:commandLink action="#{clinicserviceController.prepareCreate}" value="#{bundle.ViewClinicserviceCreateLink}" />
+                <br />
+                <h:commandLink action="#{clinicserviceController.prepareList}" value="#{bundle.ViewClinicserviceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewClinicserviceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

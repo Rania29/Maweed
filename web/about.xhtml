@@ -8,97 +8,77 @@
         <title>About Maweed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/aboutcss.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <div class="wrap">
-            <div class="top-div">
-                <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
-                    <a id="separator">|</a>
-                    <a href="index.xhtml">English</a>
-                </div>
-                <div class="right-div">
-                    <a href="singIn.xhtml">SignIn</a> 
-                    <a id="separator">|</a>
-                    <a href="register.xhtml">Register</a>
-                </div>
+        <div >
 
-            </div>
             <header class="header-top">
-                <div class="menu-icon">
-                    <a href="index.xhtml"><img src="resources/images/menu.png"  alt=""/></a>
-                </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 
 
-                <div class="search-box">
-                    <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name or service" id="search"/>
-                            <h:commandLink value="Search" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
-                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
-                        </h:form>
-
-                    </div>
+                <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
                 </div>
+
+                <nav id="myDropdown" class="menu">
+                    <a href="index.xhtml" class="item_menu">home</a>
+                    <a href="about.xhtml" class="item_menu">about</a>
+                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                    <a href="help.xhtml" class="item_menu">Help</a>
+                </nav>
+
             </header><!--Header End-->
+            
             <nav class="navbar">
                 <ul>
                     <li><a href="index.xhtml">Home</a></li>
                     <li><a href="#">Categories</a>
                         <ul>
-                            <li><a href="categories-html/medical-care.xhtml">Medical Care</a></li>
-                            <li><a href="categories-html/heart.xhtml">Heart</a></li>
-                            <li><a href="categories-html/Obstetrics.xhtml">Obstetrics</a></li>
-                            <li><a href="categories-html/Pediatrics.xhtml">Pediatrics</a></li>
-                            <li><a href="categories-html/beauty.xhtml">Beauty Centers</a></li>
-                            <li><a href="categories-html/dentist.xhtml">Dentist</a></li>
-                            <li><a href="categories-html/dermatology.xhtml">Dermatology</a></li>
-                            <li><a href="categories-html/Opthalmology.xhtml">Opthalmology</a></li>
-                            <li><a href="categories-html/massage.xhtml">Massage Center</a></li>
-                            <li><a href="categories-html/Physiotherapy.xhtml">Physiotherapy</a></li>
-                            <li><a href="categories-html/weight-loss.xhtml">Weight Loss</a></li>
-                            <li><a href="categories-html/Special-Needs">Special Needs</a></li>
-                            <li><a href="categories-html/Veterinary.xhtml">Veterinary</a></li>
+                            <li><a href="categories-html/medical-care.xhtml">Pediatric</a></li>
                         </ul>
                     </li>
-                    <li><a  href="about.xhtml">About Us</a></li>
+                    <li><a  href="index.xhtml">About Us</a></li>
                     <li><a  href="contact.xhtml">Contact</a></li>
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            <main class="main-part">
+            <main>
+                <div class="about-maweed">
+                    <div class="left-div">
+                        <div class="center-text">
+                            <h1>All Qatar hospitals in between your hands</h1>
+                        </div>
+                    </div>
+                    <div class="right-div">
+                        <div class="center-text">
+                            <p>I had this website idea of gathering all hospitals and health care centers in one place, because I felt that my heath and every body’s too is so precious to take the risk by choosing the wrong clinic only because its near to my house. I prefer to check all options like (location, services, prices, discounts and offers) before deciding which hospital suits me the best.</p>
 
-                <div class="about-us">
-                    <div class="personal-img">
-                        I will put my picture here... 
+                        </div>
                     </div>
-                    <div class="scnd-div">
-                        <h1>All Qatar hospitals in between your hands</h1>
-                        <h1>Choose the best because your health is precious.</h1>
-                    </div>
-
-                    <div class="thrd-div">
-                        <h2>aha moment !!</h2>
-                        <p>The reason why I had this idea is when you need let’s say “pediatric” doctor for your child or “perfect price teeth whitening” clinic, you ask your sister or friend and their answers depends on their experience , they will lead you to clinic they went to before or specific doctor , BUT… maybe choices they gave you is not the best for you .
-                            From there I had this idea of collecting all hospitals and give detailed information about their location, staff, prices and much more so you have the ability to choose what suits you the best.
-                        </p>
-                    </div>
-                    <div class="frth-div">
-                        <h2>Who we serve</h2>
-                        <p>We serve every person need the best for their health, everyone needs to check all available options they have for taking the best health decision.</p>
-                    </div>
-
                 </div>
-
+                <div class="about-me">
+                    <div class="self-img">
+                        <div class="center-img">
+                            <img src="resources/images/2013-09-11 07.39.00.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="self-info">
+                        <div class="center-text">
+                            <h1>
+                                Rania Rabie Baioomi
+                            </h1>
+                            <h2>Founder and Front-end Designer</h2>
+                            <p>
+                                I was born and live in Qatar, studied Computer Systems and Networks in Sudan University in Khartoum-Sudan. I love web Designing and Developing. I wanted  to use this passion to help others, therefore I designed this site.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </main>
             <footer>
                 <div class="upper-footer">

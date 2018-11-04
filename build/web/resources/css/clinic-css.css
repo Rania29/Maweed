@@ -58,19 +58,7 @@ and open the template in the editor.
 div.hidden-div{
     display: none;
 }
-/**.clnk{
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 5px;
-    display:inline-block;
-    font-size: 15px;
-    color:#838383;
-    padding: 5px;
-    height: 120px;
-    background-color: #FCFCFC;
-    opacity: 0.8;
-    filter: alpha(opacity=60);
-}**/
+
 div.clnk-container{
     display: flex;
     justify-content: center;
@@ -80,12 +68,7 @@ div.clnk-container{
     opacity: 0.8;
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
-/**.clnk-container{
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 100%;
-    text-align: center;
-}**/
+
 .clnk-widget{
     display: inline-block;
     height: 100%;
@@ -205,6 +188,14 @@ div.clnk-container{
     max-width: 120px ;
     height: 50px ;
 }
+
+/*******************Star rating *****************************/
+
+
+/*********************Star rating end*****************/        
+
+
+
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
@@ -290,7 +281,7 @@ div.clnk-container{
     .navbar{
         display: none;
     }
-     div.item{
+    div.item{
         display: none;
     }
     div.hidden-div{
@@ -378,7 +369,7 @@ div.clnk-container{
         display: flex;
         justify-content: flex-start;
     }
-    
+
 }
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
@@ -467,7 +458,7 @@ div.clnk-container{
     .navbar{
         display: none;
     }
-     div.item{
+    div.item{
         display: none;
     }
     div.hidden-div{
@@ -533,7 +524,7 @@ div.clnk-container{
     .clnk-info span{
         color: #717171;
     }
-       div.appoinment-btn{
+    div.appoinment-btn{
         height: auto;
         margin: 0 auto;
         text-align: center;
@@ -555,7 +546,7 @@ div.clnk-container{
         display: flex;
         justify-content: flex-start;
     }
-    
+
 }
 
 

@@ -125,7 +125,7 @@ div.logo{
     float: left;
     width: 60%;
     height: inherit;
-    
+
 }
 .hidden-link{
     display: none;
@@ -268,51 +268,55 @@ div.center-search{
 .navbar ul li ul li a:visited { 
     color: #ffffff;
 }
-/**Adv div**/
-.advrtisment{
-    clear: both;
-    width: 70vw;
+
+/*************************************Slide Show***************************************/
+.slides_container{
+    max-width:900px;
+    max-height: 500px;
+    border: 1px solid #cccccc;
+    background-color: inherit;
     margin: 0 auto;
     text-align: center;
-    height: 520px;
     margin-bottom: 15px;
+    position: relative;
 }
-.item1{
+
+.mySlides {
+    display:none;
+
+}
+
+.indecator_container{
+    cursor:pointer;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+}
+
+.fl-left{
     float: left;
-    height: 525px;
-    width: 49.7vw;
-    border: 1px solid #D7D0CC;
 }
-.item1 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
-}
-.item2{
+.fl-right{
     float: right;
-    height: 260px;
-    width: 20vw;
-    margin-bottom: 5px;
-    border: 1px solid #D7D0CC;
 }
-.item2 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
+.arrow_style{
+    color: red;
 }
-.item3{
-    float: right;
-    height: 260px;
-    width: 20vw;
-    border: 1px solid #D7D0CC;
+.w3-badge {
+    height:13px;
+    width:13px;
+    padding:0;
 }
-.item3 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
+.indecator{
+    display: inline-block;
+    border: 1px solid white;
+    height: 15px;
+    width: 15px;
+    border-radius: 30px;
+}
+
+.indecator:hover{
+    background-color: white;
 }
 
 /*Headers Catigories**/
@@ -410,18 +414,7 @@ div.lower-footer h2{
     .right-div{
         padding-right: 20px;
     }
-    /**
-     div.menu-icon{
-         display: flex;
-         float: left;
-         width: 20%;
-         height: inherit;
-     }
-     
-     .menu-icon{
-         justify-content: center;
-         align-items: center;
-     }**/
+
     /**div of Logo*/
     div.container {
         background-color: inherit;
@@ -458,7 +451,7 @@ div.lower-footer h2{
         width: 80%;
         height: inherit;
         text-align: center;
-        
+
     }
     /**Logo image*/
     .logo img{
@@ -503,7 +496,7 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
-        margin-left: -4px;
+        margin-left: -3px;
     }
     .hidden-link1{
         display: none;
@@ -523,10 +516,6 @@ div.lower-footer h2{
         padding: 5px;
     }
 
-
-    .select-style{
-        width: 75px;
-    }
     .dropbtn{
         border: 1px solid #cccccc;
     }
@@ -534,28 +523,18 @@ div.lower-footer h2{
     .navbar{
         display: none;
     }
-    .advrtisment{
-        width: 95vw;
-        height: 600px;
+    /*******************slide show*****************************/
+
+    .slides_container{
+        clear: both;
+        max-width:100%;
+        height: 250px;
+        border: 1px solid #cccccc;
+        background-color: inherit;
+        margin: 0 auto;
+        text-align: center;
         margin-bottom: 5px;
-    }
-    .item1{
-        float: left;
-        height: 300px;
-        width: 95vw;
-        margin-bottom: 5px;
-    }
-    .item2{
-        float: left;
-        height: 150px;
-        width: 95vw;
-        margin-bottom: 5px;
-    }
-    .item3{
-        float:left;
-        height: 150px;
-        width: 95vw;
-        margin-bottom: 8px;
+        position: relative;
     }
 }
 
@@ -570,19 +549,6 @@ div.lower-footer h2{
         width: 100%;
         height: 100px;
     }
-   
-    /**
-     div.menu-icon{
-         display: flex;
-         float: left;
-         width: 20%;
-         height: inherit;
-     }
-     
-     .menu-icon{
-         justify-content: center;
-         align-items: center;
-     }**/
     /**div of Logo*/
     div.container {
         background-color: inherit;
@@ -664,32 +630,26 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
+    .select-style{
+        margin-left: -3px;
+    }
     .navbar{
         display: none;
     }
-    .advrtisment{
-        width: 95vw;
-        height: 600px;
+    /*******************slide show*****************************/
+
+    .slides_container{
+        clear: both;
+        max-width:100%;
+        max-height: 250px;
+        border: 1px solid #cccccc;
+        background-color: inherit;
+        margin: 0 auto;
+        text-align: center;
         margin-bottom: 5px;
+        position: relative;
     }
-    .item1{
-        float: left;
-        height: 300px;
-        width: 95vw;
-        margin-bottom: 5px;
-    }
-    .item2{
-        float: left;
-        height: 150px;
-        width: 95vw;
-        margin-bottom: 5px;
-    }
-    .item3{
-        float:left;
-        height: 150px;
-        width: 95vw;
-        margin-bottom: 8px;
-    }
+
 }
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
@@ -699,18 +659,7 @@ div.lower-footer h2{
     div.logo-header{
         height: 90px;
     }
-     /**
-     div.menu-icon{
-         display: flex;
-         float: left;
-         width: 20%;
-         height: inherit;
-     }
-     
-     .menu-icon{
-         justify-content: center;
-         align-items: center;
-     }**/
+
     /**div of Logo*/
     div.container {
         background-color: inherit;
@@ -786,49 +735,24 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
+    .select-style{
+        margin-left: -3px;
+    }
     .navbar{
         display: none;
     }
-    .advrtisment{
-        width: 95vw;
-        height: 605px;
-    }
-    .item1{
-        float: left;
-        height: 300px;
-        width: 95vw;
-        border: 1px solid #D7D0CC;
+    /*******************slide show*****************************/
+
+    .slides_container{
+        clear: both;
+        max-width:100%;
+        max-height: 350px;
+        border: 1px solid #cccccc;
+        background-color: inherit;
+        margin: 0 auto;
+        text-align: center;
         margin-bottom: 5px;
+        position: relative;
     }
-    .item1 img{
-        width:100%;
-        height:100%;
-        margin:auto;
-        display: block;
-    }
-    .item2{
-        float: left;
-        height: 300px;
-        width: 59vw;
-        margin-right: 5px;
-        border: 1px solid #D7D0CC;
-    }
-    .item2 img{
-        width:100%;
-        height:100%;
-        margin:auto;
-        display: block;
-    }
-    .item3{
-        float: right;
-        height: 300px;
-        width: 35vw;
-        border: 1px solid #D7D0CC;
-    }
-    .item3 img{
-        width:100%;
-        height:100%;
-        margin:auto;
-        display: block;
-    }
+
 }

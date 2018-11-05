@@ -90,9 +90,7 @@ body, html{
     height: 100px;
     clear: both;
 }
-/**.menu-icon{
-    display: none;
-}**/
+
 /**logo image**/
 div.logo{
     float: left;
@@ -239,7 +237,7 @@ div.center-search{
     padding: 8px 15px;
 }
 div.dropcat li:hover{
-    background-color: red;
+    
 }
 
 
@@ -283,7 +281,7 @@ div.dropcat li:hover{
     float: right;
 }
 .arrow_style{
-    color: red;
+    color: white;
 }
 .w3-badge {
     height:13px;
@@ -303,53 +301,7 @@ div.dropcat li:hover{
 }
 
 /************************************Slide show ends************************************/
-/**
-.advrtisment{
-    clear: both;
-    width: 70vw;
-    margin: 0 auto;
-    text-align: center;
-    height: 520px;
-    margin-bottom: 15px;
-}
-.item1{
-    float: left;
-    height: 525px;
-    width: 49.7vw;
-    border: 1px solid #D7D0CC;
-}
-.item1 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
-}
-.item2{
-    float: right;
-    height: 260px;
-    width: 20vw;
-    margin-bottom: 5px;
-    border: 1px solid #D7D0CC;
-}
-.item2 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
-}
-.item3{
-    float: right;
-    height: 260px;
-    width: 20vw;
-    border: 1px solid #D7D0CC;
-}
-.item3 img{
-    width:100%;
-    height:100%;
-    margin:auto;
-    display: block;
-}
-**/
+
 
 /*Headers Catigories**/
 h1{
@@ -528,6 +480,7 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
+        margin-right: 1px;
     }
     .hidden-link1{
         display: none;
@@ -547,10 +500,6 @@ div.lower-footer h2{
         padding: 5px;
     }
 
-
-    .select-style{
-        width: 75px;
-    }
     .dropbtn{
         border: 1px solid #cccccc;
     }
@@ -667,6 +616,9 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
+    .select-style{
+        margin-right: 1px;
+    }
     .navbar{
         display: none;
     }
@@ -675,7 +627,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width:100%;
-        height: 250px;
+        max-height: 250px;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
@@ -695,7 +647,6 @@ div.lower-footer h2{
     div.logo-header{
         height: 90px;
     }
-
 
     div.container {
         background-color: inherit;
@@ -778,6 +729,9 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
+    .select-style{
+        margin-right: 1px;
+    }
     .navbar{
         display: none;
     }
@@ -786,7 +740,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width:100%;
-        height: 350px;
+        max-height: 350px;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
@@ -796,9 +750,3 @@ div.lower-footer h2{
     }
 }
 
-/**
-@media only screen and (min-width: 320px) and (max-width: 479px){ ... }
-
-@media only screen and (min-width: 480px) and (max-width: 767px){ ... }
-
-@media only screen and (min-width: 768px) and (max-width: 991px){ ... }**/

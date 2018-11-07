@@ -116,7 +116,7 @@ div.logo{
 }
 .logo img{
     margin: 12px 40px;
-    width:220px; 
+    width: 220px; 
     height: 69px;
 }
 
@@ -160,25 +160,27 @@ div.center-search{
 .select-style{
     width: 100px;
     height: 40px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: -5px;
     border-radius: 0 5px 5px 0;
+}
+input, command{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .hidden-link1 {
     display: inline-block;
     margin:  auto;
-    text-align: center;
-    vertical-align: middle;
     position: relative;
-    cursor: pointer;
+    width: auto;
+    height: inherit;
+    padding: 0 10px;
+    font-size: 18px;
+    text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
-    height: 40px;
-    padding: 5px 10px;
-    text-decoration: none;
     color: white;
-    font-size: 18px;
 }
 
 
@@ -272,7 +274,7 @@ div.center-search{
 /*************************************Slide Show***************************************/
 .slides_container{
     max-width:900px;
-    max-height: 500px;
+    max-height: 500px !important;
     border: 1px solid #cccccc;
     background-color: inherit;
     margin: 0 auto;
@@ -350,6 +352,7 @@ h1{
     text-decoration: none;
     color: #013069; 
     font-size: 16px;
+    font-weight: bold;
     line-height: 20px;
 }
 .cat-item a:hover {
@@ -487,7 +490,6 @@ div.lower-footer h2{
         display: inline-block;
         overflow: hidden;
         width: 100%;
-        /**padding: 10px 20px;**/
     }
     .form-style input[type='text']{
         width: 200px;
@@ -496,7 +498,7 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
-        margin-left: -3px;
+        margin-left: -2px;
     }
     .hidden-link1{
         display: none;
@@ -512,6 +514,10 @@ div.lower-footer h2{
         border-radius: 5px;
         height: 40px;
     }
+    input, command{
+    display: inline-block;
+    vertical-align: middle;
+}
     .search-icon{
         padding: 5px;
     }
@@ -633,6 +639,10 @@ div.lower-footer h2{
     .select-style{
         margin-left: -3px;
     }
+    input, command{
+    display: inline-block;
+    vertical-align: middle;
+}
     .navbar{
         display: none;
     }
@@ -738,6 +748,10 @@ div.lower-footer h2{
     .select-style{
         margin-left: -3px;
     }
+    input, command{
+    display: inline-block;
+    vertical-align: middle;
+}
     .navbar{
         display: none;
     }

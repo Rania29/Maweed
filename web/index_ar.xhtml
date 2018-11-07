@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>موقع موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -46,19 +48,17 @@
 
                 <div class="search-box">
                     <div class="center-search">
-                        <form class="form-style">
-                            <select class="select-style">
-                                <option value="">المناطق</option>
-                                <option value="">الريان القديم</option>
-                                <option value="">الدوحة</option>
-                                <option value="">السد</option>
-                            </select>
-                            <input type="text" placeholder="اكتب إسم العيادة أو الخدمة" name="search"/>
-                            <a href="search.xhtml" class="hidden-link1">بحث</a>
-                            <a href="search.xhtml" class="hidden-link">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name or service" id="search"/>
+                            <h:commandLink value="Search" class="hidden-link1"/>
+                            <h:commandLink class="hidden-link">
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </a>
-                        </form>
+                            </h:commandLink>
+                        </h:form>
+
                     </div>
                 </div>
             </header><!--Header End-->

@@ -4,12 +4,15 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : May 23, 2018, 12:55:14 PM
+    Created on : Nov 7, 2018, 10:29:42 PM
     Author     : Nooshi
 */
-/**Body*/
+
 *, *::before, *::after{
     box-sizing: border-box;;
+}
+html, body{
+    direction: rtl;
 }
 
 
@@ -39,7 +42,7 @@ h3{
 .contact_form {
     height: inherit;
     display: inline-block;
-    text-align: left;
+    text-align: right;
 }
 
 input[type=text], select, textarea {

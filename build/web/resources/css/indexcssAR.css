@@ -133,16 +133,18 @@ div.logo{
 .form-style{
     overflow: hidden;
     float: left;
+    margin-left: 10px;
 }
 div.center-search{
     height: available;
     display: inline-block;
     padding-top: 30px;
     padding-bottom: 20px;
-    padding-left: 25px;
+    padding-left: 5px;
     padding-right: 5px;
     margin-right: 25px;
     float: left;
+
 }
 /**style search box**/
 .form-style input[type='text']{
@@ -150,8 +152,8 @@ div.center-search{
     outline: 0;
     box-shadow: none;
     font-size: 15px;
-    padding-left: 5px;
-    border-radius:  5px 0 0 5px  ;
+    padding-right: 5px;
+    border-radius: 5px 0 0 5px ;
     color: #666666;
     height: 40px;
     width: 320px;
@@ -160,9 +162,13 @@ div.center-search{
 .select-style{
     width: 100px;
     height: 40px;
-    font-size: 12px;
-    margin-left: -5px;
-    border-radius: 0 5px 5px 0;
+    font-size: 14px;
+    margin-left: 0px;
+    border-radius: 0 5px 5px 0 ;
+}
+input, command{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .hidden-link1 {
@@ -175,7 +181,7 @@ div.center-search{
     background-color: #55A6D7;
     border-radius: 5px;
     height: 40px;
-    padding: 5px 10px;
+    padding: 0px 12px;
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -324,7 +330,7 @@ h1{
     clear: both;
     margin: 0 auto;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: #ffffff;
     background-color: #55A6D7;
     padding: 8px;
@@ -350,6 +356,7 @@ h1{
     text-decoration: none;
     color: #013069; 
     font-size: 16px;
+    font-weight: bold;
     line-height: 20px;
 }
 .cat-item a:hover {
@@ -487,7 +494,6 @@ div.lower-footer h2{
         display: inline-block;
         overflow: hidden;
         width: 100%;
-        /**padding: 10px 20px;**/
     }
     .form-style input[type='text']{
         width: 200px;
@@ -496,7 +502,7 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
-        margin-left: -3px;
+        margin-left: 1px;
     }
     .hidden-link1{
         display: none;
@@ -514,6 +520,10 @@ div.lower-footer h2{
     }
     .search-icon{
         padding: 5px;
+    }
+    input, command{
+        display: inline-block;
+        vertical-align: middle;
     }
 
     .dropbtn{
@@ -630,9 +640,7 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
-    .select-style{
-        margin-left: -3px;
-    }
+
     .navbar{
         display: none;
     }
@@ -654,7 +662,7 @@ div.lower-footer h2{
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
-@media screen and (min-width: 600px) and (max-width: 1024px){
+@media screen and (min-width: 600px) and (max-width: 900px){
 
     div.logo-header{
         height: 90px;
@@ -735,9 +743,7 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
-    .select-style{
-        margin-left: -3px;
-    }
+
     .navbar{
         display: none;
     }

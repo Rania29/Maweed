@@ -3,8 +3,10 @@ package entity.domain;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.CategoryFacade;
-
+import facade.ClinicFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,14 +23,29 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class CategoryController implements Serializable {
 
+    private List<Hospital> hospitals;
     private Category current;
     private DataModel items = null;
     @EJB
     private facade.CategoryFacade ejbFacade;
+    @EJB
+    private ClinicFacade clinicFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public CategoryController() {
+    }
+
+    public Category getCurrent() {
+        return current;
+    }
+
+    public List<Hospital> getHospitals() {
+        return hospitals;
+    }
+
+    public void setCurrent(Category current) {
+        this.current = current;
     }
 
     public Category getSelected() {
@@ -41,6 +58,29 @@ public class CategoryController implements Serializable {
 
     private CategoryFacade getFacade() {
         return ejbFacade;
+    }
+
+    public List<Category> findCategories() {
+        return ejbFacade.findCategoriesSorted();
+    }
+
+    public String toCategory(Category category) {
+        String name = category.getName();
+        List<Clinic> clinics = clinicFacade.findClinicByCat(category);
+        hospitals = new ArrayList<>();
+        if (!clinics.isEmpty()) {
+            for (Clinic o : clinics) {
+                hospitals.add(o.getHospitalId());
+            }
+        }
+        current = (Category) ejbFacade.findCatByName(name);
+        return "category";
+    }
+
+    public String toCategoryArabic(Object obj) {
+        String name = ((Category) obj).getName();
+        current = (Category) ejbFacade.findCatByName(name);
+        return "category_arabic";
     }
 
     public PaginationHelper getPagination() {

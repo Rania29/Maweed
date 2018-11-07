@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.AreaFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -183,6 +184,14 @@ public class AreaController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
+    public List<Area> findAreaName() {
+        return ejbFacade.findAreas();
+    }
+    
+    public List<Area> findAreaNameArabic() {
+        return ejbFacade.findArabicAreas();
+    }
+    
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }

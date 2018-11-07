@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity.domain;
 
 import java.io.Serializable;
@@ -32,7 +27,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Clinic.findAll", query = "SELECT c FROM Clinic c")
     , @NamedQuery(name = "Clinic.findById", query = "SELECT c FROM Clinic c WHERE c.id = :id")
-    , @NamedQuery(name = "Clinic.findByWorkingdayshours", query = "SELECT c FROM Clinic c WHERE c.workingdayshours = :workingdayshours")})
+    , @NamedQuery(name = "Clinic.findByWorkingdayshours", query = "SELECT c FROM Clinic c WHERE c.workingdayshours = :workingdayshours")
+    , @NamedQuery(name = "Clinic.findClinicByCat", query = "SELECT c FROM Clinic c WHERE c.categoryId = :categoryId")})
 public class Clinic implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -136,5 +132,5 @@ public class Clinic implements Serializable {
     public String toString() {
         return "entity.domain.Clinic[ id=" + id + " ]";
     }
-    
+
 }

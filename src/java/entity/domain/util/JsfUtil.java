@@ -14,7 +14,7 @@ public class JsfUtil {
         SelectItem[] items = new SelectItem[size];
         int i = 0;
         if (selectOne) {
-            items[0] = new SelectItem("", "Area");
+            items[0] = new SelectItem("", "---");
             i++;
         }
         for (Object x : entities) {

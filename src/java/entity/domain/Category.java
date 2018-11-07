@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
     , @NamedQuery(name = "Category.findById", query = "SELECT c FROM Category c WHERE c.id = :id")
     , @NamedQuery(name = "Category.findByImage", query = "SELECT c FROM Category c WHERE c.image = :image")
-    , @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")})
+    , @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")
+    , @NamedQuery(name = "Category.findAllSorted", query = "SELECT c FROM Category c order by c.name")
+    , @NamedQuery(name = "Category.findByInArabic", query = "SELECT c FROM Category c WHERE c.inArabic = :inArabic")})
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,10 +48,21 @@ public class Category implements Serializable {
     @Size(max = 255)
     @Column(name = "name")
     private String name;
+
+    private String inArabic;
+
     @OneToMany(mappedBy = "categoryId")
     private Collection<Clinic> clinicCollection;
 
     public Category() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Category(Long id) {
@@ -113,5 +126,5 @@ public class Category implements Serializable {
     public String toString() {
         return "entity.domain.Category[ id=" + id + " ]";
     }
-    
+
 }

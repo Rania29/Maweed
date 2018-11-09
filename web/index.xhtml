@@ -79,7 +79,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
                                     </h:form>
                                 </li>
                             </c:forEach>

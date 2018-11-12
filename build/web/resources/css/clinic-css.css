@@ -45,15 +45,10 @@ and open the template in the editor.
 
 .clinic-name{
     background-color: inherit;
-    color: #9C70A5;
+    color: #00cc99;
 }
-.item{
-    height: 500px;
-    width: 100%;
-    background-image: url(../images/slide9.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-bottom: 10px;
+div.item{
+    margin-bottom: 15px;
 }
 div.hidden-div{
     display: none;
@@ -109,9 +104,9 @@ div.clnk-container{
 .appoinment-btn input[type='submit']{
     width: auto;
     height: 60px;
-    background-color: #9C70A5;
+    background-color: #00cc99;
     border: none;
-    color: #ffffff;
+    color: #000000;
     cursor: pointer;
     text-align: center;
     margin: 5px;
@@ -233,70 +228,14 @@ div.clnk-container{
         width: 220px;
         height: 69px;
     }
-    div.search-box{
-        clear: both;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 65px;
-        margin: auto;
-    }
-    div.center-search{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-        padding: 10px;
-        margin-left: auto;
-        margin-right:  auto;
-        text-align: center;
-        background-color: #445268;
-    }
 
-    .form-style{
-        margin: 0 auto;
-        display: inline-block;
-        overflow: hidden;
-        width: 100%;
-
-    }
-    .form-style input[type='text']{
-        width: 220px;
-        border: 1px solid gray;
-        font-size: 16px;
-    }
-    .form-style input[type='submit']{
-        width: 70px;
-        border: 2px solid #55A6D7;
-    }
-    .select-style{
-        width: 75px;
-    }
-    .dropbtn{
-        border: 1px solid #cccccc;
-    }
-
-    .navbar{
-        display: none;
-    }
     div.item{
         display: none;
     }
     div.hidden-div{
         display: block;
     }
-    div.item1{
-        display: block;
-        width: 100%;
-        height: 300px;
-        /**background-image: url(../images/slide9.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        margin: auto;**/
-    }
+
 
     div.clnk-container{
         display: block;
@@ -355,9 +294,9 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 300px;
         height: 50px;
-        background-color: #9C70A5;
+        border: 2px solid #00cc99;
+        color: #000000;
         border: none;
-        color: #ffffff;
         cursor: pointer;
         text-align: center;
         margin: 5px;
@@ -446,7 +385,8 @@ div.clnk-container{
     }
     .form-style input[type='submit']{
         width: 70px;
-        border: 2px solid #55A6D7;
+        border: 2px solid #00cc99;
+        color: #000000;
     }
     .select-style{
         width: 75px;
@@ -464,16 +404,7 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
-    div.item1{
-        display: block;
-        width: 100%;
-        height: 300px;
-        /**background-image: url(../images/slide9.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        margin: auto;**/
-    }
+
 
     div.clnk-container{
         display: block;
@@ -532,9 +463,9 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 400px;
         height: 50px;
-        background-color: #9C70A5;
+        border: 2px solid #00cc99;
+        color: #000000;
         border: none;
-        color: #ffffff;
         cursor: pointer;
         text-align: center;
         margin: 5px;
@@ -620,7 +551,8 @@ div.clnk-container{
     }
     .form-style input[type='submit']{
         width: 70px;
-        border: 2px solid #55A6D7;
+        border: 2px solid #00cc99;
+        color: #000000;
     }
     .dropbtn{
         border: 1px solid #cccccc;
@@ -634,16 +566,7 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
-    div.item1{
-        display: block;
-        width: 100%;
-        height: 300px;
-        /**background-image: url(../images/slide9.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        margin: auto;**/
-    }
+
 
     div.clnk-container{
         display: block;
@@ -702,9 +625,9 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 500px;
         height: 50px;
-        background-color: #9C70A5;
+        border: 2px solid #00cc99;
+        color: #000000;
         border: none;
-        color: #ffffff;
         cursor: pointer;
         text-align: center;
         margin: 5px;

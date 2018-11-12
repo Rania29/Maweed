@@ -145,12 +145,12 @@ div.center-search{
     float: left;
 }
 /**style search box**/
-.form-style input[type='text']{
+.form-style input{
     border: 1px solid #445268;
     outline: 0;
     box-shadow: none;
     font-size: 15px;
-    padding-left: 5px;
+    padding-right: 5px;
     border-radius:  5px 0 0 5px  ;
     color: #666666;
     height: 40px;
@@ -161,10 +161,9 @@ div.center-search{
     width: 100px;
     height: 40px;
     font-size: 14px;
-    margin-left: -5px;
     border-radius: 0 5px 5px 0;
 }
-input, command{
+.form-style > input, command, select{
     display: inline-block;
     vertical-align: middle;
 }
@@ -356,7 +355,7 @@ h1{
     font-size: 16px;
     font-weight: bold;
     line-height: 18px;
-    
+
 }
 .cat-item a:hover {
     color: #55A6D7;
@@ -486,7 +485,7 @@ div.lower-footer h2{
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
-        
+
     }
 
     .form-style{
@@ -502,7 +501,6 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
-        margin-left: -2px;
     }
     .hidden-link1{
         display: none;
@@ -519,9 +517,9 @@ div.lower-footer h2{
         height: 40px;
     }
     input, command{
-    display: inline-block;
-    vertical-align: middle;
-}
+        display: inline-block;
+        vertical-align: middle;
+    }
     .search-icon{
         padding: 5px;
     }
@@ -538,7 +536,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width:100%;
-        height: 250px;
+        max-height: 250px;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
@@ -640,13 +638,11 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
-    .select-style{
-        margin-left: -3px;
-    }
+
     input, command{
-    display: inline-block;
-    vertical-align: middle;
-}
+        display: inline-block;
+        vertical-align: middle;
+    }
     .navbar{
         display: none;
     }
@@ -749,13 +745,11 @@ div.lower-footer h2{
     .dropbtn{
         border: 1px solid #cccccc;
     }
-    .select-style{
-        margin-left: -3px;
-    }
+
     input, command{
-    display: inline-block;
-    vertical-align: middle;
-}
+        display: inline-block;
+        vertical-align: middle;
+    }
     .navbar{
         display: none;
     }

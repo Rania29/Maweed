@@ -8,13 +8,9 @@ and open the template in the editor.
     Author     : Nooshi
 */
 
-*, *::before, *::after{
-    box-sizing: border-box;;
-}
 html, body{
     direction: rtl;
 }
-
 
 .head{
     clear: both;
@@ -45,7 +41,7 @@ h3{
     text-align: right;
 }
 
-input[type=text], select, textarea {
+.contact_form input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -57,7 +53,7 @@ input[type=text], select, textarea {
     font-size: 14px;
 }
 
-label{
+.contact_form label{
     color: #013069;
 }
 

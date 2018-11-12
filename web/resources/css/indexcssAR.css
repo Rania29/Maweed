@@ -272,7 +272,7 @@ div.center-search{
 
 /*************************************Slide Show***************************************/
 .slides_container{
-    max-width:900px;
+    max-width: 900px;
     max-height: 500px !important;
     border: 1px solid #cccccc;
     background-color: inherit;

@@ -16,7 +16,7 @@
     <h:body>
         <div class="top-div">
             <div class="left-div">
-                <a href="search_ar.xhtml">عربي</a>
+                <a href="category_ar.xhtml">عربي</a>
                 <a class="separator">|</a>
                 <a href="index.xhtml">English</a>
             </div>
@@ -46,7 +46,7 @@
                 <a href="help.xhtml" class="item_menu">Help</a>
             </nav>
 
-            <!------ Search Div ------>
+            <!--Search Div-->
             <div class="search-box">
                 <div class="center-search">
                     <h:form class="form-style">
@@ -63,34 +63,43 @@
                 </div>
             </div>
         </header><!--Header End-->
+        
         <nav class="navbar">
-            <ul>
-                <li><a  href="index.xhtml">Home</a></li>
-                <li><a href="#" style="color: #445268">Categories</a>
-                    <ul>
-                        <li><a href="categories-xhtml/heart.xhtml">Heart</a></li>
-                    </ul>
-                </li>
-                <li><a  href="about.xhtml">About Us</a></li>
-                <li><a  href="contact.xhtml">Contact</a></li>
-                <li><a  href="help.xhtml">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
+                <ul>
+                    <li><a  href="index.xhtml">Home</a></li>
+                    <li><a href="#" class="dropcat">Categories</a>
+                        <ul>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li><a  href="about.xhtml">About Us</a></li>
+                    <li><a  href="contact.xhtml">Contact</a></li>
+                    <li><a  href="help.xhtml">Help</a></li>
+                </ul>
+            </nav><!--Navigation bar End-->
 
         <div class="main_div">
             <h2 class="cat-name">#{categoryController.current.name}</h2>
             <div class="result">
                 <div class="result_items">
-                    <div class="clnk-div">
+                    
                         <c:forEach items="#{categoryController.hospitals}" var="h">
+                            <div class="clnk-div">
                             <a href="#">
                                 <img src="resources/images/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.name}</span><br />
                                 <span class="clnk-location">#{h.areaId.name}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
                             </a>
+                                </div>
                         </c:forEach>
-                    </div>
+                    
                 </div>
             </div>
         </div>

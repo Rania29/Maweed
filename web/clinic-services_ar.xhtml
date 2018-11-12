@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Clinic Services</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -23,16 +24,16 @@
                     <a href="clinic-services.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin.xhtml">SignIn</a> 
+                    <a href="signin_ar.xhtml">SignIn</a> 
                     <a id="separator">|</a>
-                    <a href="registration.xhtml">Register</a>
+                    <a href="registration_ar.xhtml">Register</a>
                 </div>
 
             </div>
             <header class="header-top">
 
                 <div class="logo">
-                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                    <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -54,7 +55,7 @@
                             <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
-                            <h:inputText a:placeholder="ابحث بإسم العيادة أو الخدمة" id="search"/>
+                            <h:inputText a:placeholder="ابحث بإسم العيادة" id="search"/>
                             <h:commandLink value="بحث" class="hidden-link1"/>
                             <h:commandLink class="hidden-link">
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
@@ -67,15 +68,22 @@
 
             <nav class="navbar">
                 <ul>
-                    <li><a  href="index.xhtml">الرئيسية</a></li>
-                    <li><a href="#" style="color: #445268">الإقسام</a>
+                    <li><a  href="index_ar.xhtml">الرئيسية</a></li>
+                    <li><a href="#" style="color: #445268" class="dropcat">الأقسام</a>
                         <ul>
-                            <li><a href="categories-html/medical-care.xhtml">الرعاية الطبية</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" value="#{c.inArabic}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+
                         </ul>
                     </li>
-                    <li><a  href="About.xhtml">عن الموقع</a></li>
-                    <li><a  href="contact.xhtml">التواصل</a></li>
-                    <li><a  href="help.xhtml">مساعدة</a></li>
+                    <li><a  href="about_ar.xhtml">عن الموقع</a></li>
+                    <li><a  href="contact_ar.xhtml">التواصل</a></li>
+                    <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
                         <div>
@@ -200,15 +208,15 @@
                     </li>
                     <li>
                         <img src="resources/images/molar-crown.png" alt=""/>
-                        <span><br />علاج جذور</span>
+                        <span><br />تركيبات</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />تخفيض</span>
+                        <span style="color: #cc0000;"><br />تخفيض</span>
                     </li>
                     <li>
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />علاج جذور</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />تخفيض</span>
+                        <span style="color: #cc0000;"><br />تخفيض</span>
                     </li>
                 </ul>
             </div>

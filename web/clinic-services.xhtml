@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Clinic Services</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -68,9 +69,15 @@
             <nav class="navbar">
                 <ul>
                     <li><a  href="index.xhtml">Home</a></li>
-                    <li><a href="#" style="color: #445268">Categories</a>
+                    <li><a href="#" class="dropcat">Categories</a>
                         <ul>
-                            <li><a href="categories-html/medical-care.xhtml">Medical Care</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </li>
                     <li><a  href="About.xhtml">About Us</a></li>
@@ -190,37 +197,37 @@
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                                         <li>
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
                         <img src="resources/images/molar-crown.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
                         <img src="resources/images/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />Maweed discount</span>
+                        <span style="color: #00cc99;"><br />discount</span>
                     </li>
                 </ul>
             </div>

@@ -5,7 +5,9 @@
  */
 package facade;
 
+import entity.domain.Category;
 import entity.domain.Clinic;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

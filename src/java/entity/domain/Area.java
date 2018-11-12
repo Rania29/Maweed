@@ -30,8 +30,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a")
     , @NamedQuery(name = "Area.findById", query = "SELECT a FROM Area a WHERE a.id = :id")
-    , @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")})
+    , @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")
+    , @NamedQuery(name = "Area.findNameSorted", query = "SELECT a.name FROM Area a order by a.name")
+    , @NamedQuery(name = "Area.findArabicNameSorted", query = "SELECT a.inarabic FROM Area a order by a.inarabic")})
 public class Area implements Serializable {
+
+    @Size(max = 255)
+    @Column(name = "inarabic")
+    private String inarabic;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -97,9 +103,17 @@ public class Area implements Serializable {
         return true;
     }
 
+    public String getInarabic() {
+        return inarabic;
+    }
+
+    public void setInarabic(String inarabic) {
+        this.inarabic = inarabic;
+    }
+
     @Override
     public String toString() {
         return name;
     }
-    
+
 }

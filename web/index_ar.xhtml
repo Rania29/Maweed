@@ -3,7 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+<<<<<<< HEAD
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+=======
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+>>>>>>> samir82show-master
     <h:head>
         <title>موقع موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -50,15 +55,27 @@
                     <div class="center-search">
                         <h:form class="form-style">
                             <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+<<<<<<< HEAD
                                 <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="إبحث بإسم المستشفى" id="search"/>
+=======
+                                <f:selectItem itemLabel="المنطقه" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="ابحث باسم المنطقه" id="search"/>
+>>>>>>> samir82show-master
                             <h:commandLink value="بحث" class="hidden-link1"/>
                             <h:commandLink class="hidden-link">
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
                         </h:form>
+<<<<<<< HEAD
 
+=======
+>>>>>>> samir82show-master
                     </div>
                 </div>
             </header><!--Header End-->
@@ -68,7 +85,17 @@
                     <li><a  href="index.xhtml">الرئيسية</a></li>
                     <li><a href="#" style="color: #445268">الإقسام</a>
                         <ul>
+<<<<<<< HEAD
                             <li><a href="categories-html/medical-care.xhtml">الرعاية الطبية</a></li>
+=======
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" value="#{c.inArabic}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+>>>>>>> samir82show-master
                         </ul>
                     </li>
                     <li><a  href="about_ar.xhtml">عن الموقع</a></li>
@@ -133,7 +160,11 @@
                     </div>
                     <div class="cat-item">
                         <a href="categories-html/Obstetrics.xhtml">
+<<<<<<< HEAD
                             <img src="resources/images/pregnancy32.png" alt=""/><br />
+=======
+                            <img src="resources/images/pregnant32.png" alt=""/><br />
+>>>>>>> samir82show-master
                             <span>نساء وولادة</span></a>
                     </div>
                     <div class="cat-item">

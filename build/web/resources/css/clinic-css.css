@@ -45,11 +45,17 @@ and open the template in the editor.
 
 .clinic-name{
     background-color: inherit;
+<<<<<<< HEAD
     color: #00cc99;
 }
 div.item{
     margin-bottom: 15px;
+=======
+    color: #64d86b;
+    font-size: 28px;
+>>>>>>> samir82show-master
 }
+
 div.hidden-div{
     display: none;
 }
@@ -104,9 +110,15 @@ div.clnk-container{
 .appoinment-btn input[type='submit']{
     width: auto;
     height: 60px;
+<<<<<<< HEAD
     background-color: #00cc99;
     border: none;
     color: #000000;
+=======
+    background-color: #64d86b;
+    border: none;
+    color: black;
+>>>>>>> samir82show-master
     cursor: pointer;
     text-align: center;
     margin: 5px;
@@ -126,12 +138,12 @@ div.clnk-container{
     display:inline-block;
     padding: 5px;
     margin: 0 5px;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 30px;
 }
 .clinic-pic ul li img{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     vertical-align: middle;
     border-radius: 10px;
 }
@@ -180,8 +192,8 @@ div.clnk-container{
 }
 /**Insurance Images*/
 .insurance ul li img{
-    max-width: 120px ;
-    height: 50px ;
+    max-width: 100px ;
+    height: 40px ;
 }
 
 /*******************Star rating *****************************/
@@ -229,6 +241,32 @@ div.clnk-container{
         height: 69px;
     }
 
+<<<<<<< HEAD
+=======
+    .form-style{
+        margin: 0 auto;
+        display: inline-block;
+        overflow: hidden;
+        width: 100%;
+        margin-right: 3px;
+    }
+    .form-style input[type='text']{
+        width: 180px;
+        border: 1px solid gray;
+        font-size: 14px;
+    }
+    .select-style{
+        width: 80px;
+        margin-right: 1px;
+    }
+    .dropbtn{
+        border: 1px solid #cccccc;
+    }
+
+    .navbar{
+        display: none;
+    }
+>>>>>>> samir82show-master
     div.item{
         display: none;
     }
@@ -294,8 +332,11 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 300px;
         height: 50px;
+<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
+=======
+>>>>>>> samir82show-master
         border: none;
         cursor: pointer;
         text-align: center;
@@ -404,7 +445,10 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> samir82show-master
 
     div.clnk-container{
         display: block;
@@ -463,8 +507,11 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 400px;
         height: 50px;
+<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
+=======
+>>>>>>> samir82show-master
         border: none;
         cursor: pointer;
         text-align: center;
@@ -566,7 +613,10 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> samir82show-master
 
     div.clnk-container{
         display: block;
@@ -625,8 +675,11 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 500px;
         height: 50px;
+<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
+=======
+>>>>>>> samir82show-master
         border: none;
         cursor: pointer;
         text-align: center;

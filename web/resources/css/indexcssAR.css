@@ -133,16 +133,18 @@ div.logo{
 .form-style{
     overflow: hidden;
     float: left;
+    margin-left: 10px;
 }
 div.center-search{
     height: available;
     display: inline-block;
     padding-top: 30px;
     padding-bottom: 20px;
-    padding-left: 25px;
+    padding-left: 5px;
     padding-right: 5px;
     margin-right: 25px;
     float: left;
+
 }
 /**style search box**/
 .form-style input{
@@ -151,7 +153,11 @@ div.center-search{
     box-shadow: none;
     font-size: 15px;
     padding-right: 5px;
+<<<<<<< HEAD
     border-radius:  5px 0 0 5px  ;
+=======
+    border-radius: 5px 0 0 5px ;
+>>>>>>> samir82show-master
     color: #666666;
     height: 40px;
     width: 320px;
@@ -161,7 +167,16 @@ div.center-search{
     width: 100px;
     height: 40px;
     font-size: 14px;
+<<<<<<< HEAD
     border-radius: 0 5px 5px 0;
+=======
+    margin-left: 0px;
+    border-radius: 0 5px 5px 0 ;
+}
+input, command{
+    display: inline-block;
+    vertical-align: middle;
+>>>>>>> samir82show-master
 }
 .form-style > input, command, select{
     display: inline-block;
@@ -179,6 +194,12 @@ div.center-search{
     text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
+<<<<<<< HEAD
+=======
+    height: 40px;
+    padding: 0px 12px;
+    text-decoration: none;
+>>>>>>> samir82show-master
     color: white;
 }
 
@@ -325,7 +346,7 @@ h1{
     clear: both;
     margin: 0 auto;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: #ffffff;
     background-color: #55A6D7;
     padding: 8px;
@@ -354,8 +375,12 @@ h1{
     color: #013069; 
     font-size: 16px;
     font-weight: bold;
+<<<<<<< HEAD
     line-height: 18px;
 
+=======
+    line-height: 20px;
+>>>>>>> samir82show-master
 }
 .cat-item a:hover {
     color: #55A6D7;
@@ -501,6 +526,10 @@ div.lower-footer h2{
     }
     .select-style{
         width: 80px;
+<<<<<<< HEAD
+=======
+        margin-left: 1px;
+>>>>>>> samir82show-master
     }
     .hidden-link1{
         display: none;
@@ -522,6 +551,10 @@ div.lower-footer h2{
     }
     .search-icon{
         padding: 5px;
+    }
+    input, command{
+        display: inline-block;
+        vertical-align: middle;
     }
 
     .dropbtn{
@@ -639,10 +672,13 @@ div.lower-footer h2{
         border: 1px solid #cccccc;
     }
 
+<<<<<<< HEAD
     input, command{
         display: inline-block;
         vertical-align: middle;
     }
+=======
+>>>>>>> samir82show-master
     .navbar{
         display: none;
     }
@@ -664,7 +700,11 @@ div.lower-footer h2{
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
+<<<<<<< HEAD
 @media screen and (min-width: 600px) and (max-width: 1000px){
+=======
+@media screen and (min-width: 600px) and (max-width: 900px){
+>>>>>>> samir82show-master
 
     div.logo-header{
         height: 90px;
@@ -746,10 +786,13 @@ div.lower-footer h2{
         border: 1px solid #cccccc;
     }
 
+<<<<<<< HEAD
     input, command{
         display: inline-block;
         vertical-align: middle;
     }
+=======
+>>>>>>> samir82show-master
     .navbar{
         display: none;
     }

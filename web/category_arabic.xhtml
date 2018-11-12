@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Category</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,25 +27,27 @@
 
         </div>
         <header class="header-top">
+            <!--<div class="menu-icon">
+                <a href="index.xhtml"><img src="resources/images/menu.png"  alt=""/></a>
+            </div>-->
             <div class="logo">
                 <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
             </div> 
-            
             <!--Hamburger button and menu-->
-            <div class="container" onclick="myFunction(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                
+                <nav id="myDropdown" class="menu">
+                    <a href="index.xhtml" class="item_menu">home</a>
+                    <a href="about.xhtml" class="item_menu">about</a>
+                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                    <a href="help.xhtml" class="item_menu">Help</a>
+                </nav>
 
-            <nav id="myDropdown" class="menu">
-                <a href="index.xhtml" class="item_menu">home</a>
-                <a href="about.xhtml" class="item_menu">about</a>
-                <a href="contact.xhtml" class="item_menu">Contact Us</a>
-                <a href="help.xhtml" class="item_menu">Help</a>
-            </nav>
 
-            <!------ Search Div ------>
             <div class="search-box">
                 <div class="center-search">
                     <h:form class="form-style">
@@ -78,18 +79,24 @@
         </nav><!--Navigation bar End-->
 
         <div class="main_div">
-            <h2 class="cat-name">#{categoryController.current.name}</h2>
+            <h2 class="cat-name">#{categoryController.current.inArabic}</h2>
             <div class="result">
                 <div class="result_items">
                     <div class="clnk-div">
-                        <c:forEach items="#{categoryController.hospitals}" var="h">
-                            <a href="#">
-                                <img src="resources/images/gulf.jpg" alt=""/><br />
-                                <span class="clnk-name">#{h.name}</span><br />
-                                <span class="clnk-location">#{h.areaId.name}</span><br />
-                                <span class="clnk-star-rating">Star rating goes here</span>
-                            </a>
-                        </c:forEach>
+                        <a href="#">
+                            <img src="resources/images/gulf.jpg" alt=""/><br />
+                            <span class="clnk-name">Gulf Dental Center</span><br />
+                            <span class="clnk-location">Al-Hilal</span><br />
+                            <span class="clnk-star-rating">Star rating goes here</span>
+                        </a>
+                    </div>
+                    <div class="clnk-div">
+                        <a href="#">
+                            <img src="resources/images/gulf.jpg" alt=""/><br />
+                            <span class="clnk-name">Name</span><br />
+                            <span class="clnk-location">Location</span><br />
+                            <span class="clnk-star-rating">Star rating goes here</span>
+                        </a>
                     </div>
                 </div>
             </div>

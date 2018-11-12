@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package facade;
 
+import entity.domain.Category;
+import entity.domain.Clinic;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author sawad
- */
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
@@ -38,10 +31,34 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
+    public Object findCatByName(String name) {
+        return getEntityManager().createNamedQuery("Category.findByName")
+                .setParameter("name", name)
+                .getSingleResult();
+    }
+
+    public List<Clinic> findClinicByCat(Category cat) {
+        return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
+                .setParameter("categoryId", cat)
+                .getResultList();
+    }
+
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
+    }
+
+    public List<T> findAreas() {
+        return getEntityManager().createNamedQuery("Area.findNameSorted").getResultList();
+    }
+
+    public List<T> findArabicAreas() {
+        return getEntityManager().createNamedQuery("Area.findArabicNameSorted").getResultList();
+    }
+
+    public List<T> findCategoriesSorted() {
+        return getEntityManager().createNamedQuery("Category.findAllSorted").getResultList();
     }
 
     public List<T> findRange(int[] range) {
@@ -60,5 +77,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

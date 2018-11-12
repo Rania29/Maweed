@@ -128,6 +128,7 @@ div.center-search{
     padding-right: 5px;
     margin-right: 25px;
     float: right;
+
 }
 /**style search box**/
 .form-style input{
@@ -152,10 +153,20 @@ div.center-search{
     display: inline-block;
     vertical-align: middle;
 }
+    input, command{
+        display: inline-block;
+        vertical-align: middle;
+    }
 
 .hidden-link1 {
     display: inline-block;
     margin:  auto;
+<<<<<<< HEAD
+=======
+    text-align: center;
+    height: inherit;
+    vertical-align: middle;
+>>>>>>> samir82show-master
     position: relative;
     width: auto;
     height: inherit;
@@ -164,7 +175,14 @@ div.center-search{
     text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
+<<<<<<< HEAD
     color: white;
+=======
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    padding: 0px 8px;
+>>>>>>> samir82show-master
 }
 
 /**nav bar style*/
@@ -238,6 +256,13 @@ div.center-search{
 .navbar ul li ul li a{
     padding: 8px 15px;
 }
+<<<<<<< HEAD
+=======
+div.dropcat li:hover{
+
+}
+
+>>>>>>> samir82show-master
 
 /* unvisited link */
 .navbar ul li ul li a:link {
@@ -262,7 +287,6 @@ div.center-search{
 
 .mySlides {
     display:none;
-
 }
 
 .indecator_container{
@@ -306,10 +330,14 @@ h1{
     clear: both;
     margin: 0 auto;
     text-align: center;
+<<<<<<< HEAD
     font-size: 25px;
+=======
+    font-size: 30px;
+>>>>>>> samir82show-master
     color: #ffffff;
     background-color: #55A6D7;
-    padding: 5px;
+    padding: 3px;
     margin-bottom: 20px;
 }
 
@@ -334,11 +362,15 @@ h1{
     color: #013069; 
     font-size: 15px;
     font-weight: bold;
+<<<<<<< HEAD
     line-height: 18px;
+=======
+    line-height: 20px;
+>>>>>>> samir82show-master
 }
 .cat-item a:hover {
     color: #55A6D7;
-    text-decoration: underline ;
+    text-decoration: underline;
 }
 /**footer**/
 footer{
@@ -450,7 +482,12 @@ div.lower-footer h2{
         width: 100%;
         height: 65px;
         margin: auto;
+<<<<<<< HEAD
         
+=======
+        background-color: #445268;
+
+>>>>>>> samir82show-master
     }
     div.center-search{
         width: 100%;
@@ -462,7 +499,7 @@ div.lower-footer h2{
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
-        background-color: #445268;
+        /**background-color: #445268;**/
     }
 
     .form-style{
@@ -473,9 +510,9 @@ div.lower-footer h2{
         margin-right: 3px;
     }
     .form-style input[type='text']{
-        width: 200px;
+        width: 180px;
         border: 1px solid gray;
-        font-size: 16px;
+        font-size: 14px;
     }
     .select-style{
         width: 80px;   
@@ -501,6 +538,7 @@ div.lower-footer h2{
     .search-icon{
         padding: 5px;
     }
+
 
     .dropbtn{
         border: 1px solid #cccccc;
@@ -646,7 +684,11 @@ div.lower-footer h2{
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
+<<<<<<< HEAD
 @media screen and (min-width: 600px) and (max-width: 1000px){
+=======
+@media screen and (min-width: 600px) and (max-width: 900px){
+>>>>>>> samir82show-master
 
     div.logo-header{
         height: 90px;

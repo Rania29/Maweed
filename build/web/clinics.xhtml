@@ -50,7 +50,10 @@
                     <div class="center-search">
                         <h:form class="form-style">
                             <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name or service" id="search"/>
                             <h:commandLink value="Search" class="hidden-link1"/>
@@ -176,10 +179,14 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
             </div>
             
             <!--Slide show section-->
+=======
+                <!--Slide show section-->
+>>>>>>> samir82show-master
             <div class="slides_container" >
                 <a href="#">
                     <img class="mySlides" src="resources/images/img1.jpg" style="height: 100%;width: 100%;"/>
@@ -207,6 +214,10 @@
                 </div>
             </div>
             <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
+<<<<<<< HEAD
+=======
+            </div>
+>>>>>>> samir82show-master
 
             <div>
                 <h1>Our Clinics</h1>

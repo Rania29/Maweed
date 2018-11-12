@@ -161,12 +161,6 @@ div.center-search{
 .hidden-link1 {
     display: inline-block;
     margin:  auto;
-<<<<<<< HEAD
-=======
-    text-align: center;
-    height: inherit;
-    vertical-align: middle;
->>>>>>> samir82show-master
     position: relative;
     width: auto;
     height: inherit;
@@ -175,14 +169,8 @@ div.center-search{
     text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
-<<<<<<< HEAD
     color: white;
-=======
-    text-decoration: none;
-    color: white;
-    font-size: 15px;
-    padding: 0px 8px;
->>>>>>> samir82show-master
+
 }
 
 /**nav bar style*/
@@ -256,13 +244,7 @@ div.center-search{
 .navbar ul li ul li a{
     padding: 8px 15px;
 }
-<<<<<<< HEAD
-=======
-div.dropcat li:hover{
 
-}
-
->>>>>>> samir82show-master
 
 /* unvisited link */
 .navbar ul li ul li a:link {
@@ -330,11 +312,7 @@ h1{
     clear: both;
     margin: 0 auto;
     text-align: center;
-<<<<<<< HEAD
     font-size: 25px;
-=======
-    font-size: 30px;
->>>>>>> samir82show-master
     color: #ffffff;
     background-color: #55A6D7;
     padding: 3px;
@@ -362,11 +340,7 @@ h1{
     color: #013069; 
     font-size: 15px;
     font-weight: bold;
-<<<<<<< HEAD
     line-height: 18px;
-=======
-    line-height: 20px;
->>>>>>> samir82show-master
 }
 .cat-item a:hover {
     color: #55A6D7;
@@ -482,12 +456,6 @@ div.lower-footer h2{
         width: 100%;
         height: 65px;
         margin: auto;
-<<<<<<< HEAD
-        
-=======
-        background-color: #445268;
-
->>>>>>> samir82show-master
     }
     div.center-search{
         width: 100%;
@@ -684,11 +652,7 @@ div.lower-footer h2{
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
-<<<<<<< HEAD
 @media screen and (min-width: 600px) and (max-width: 1000px){
-=======
-@media screen and (min-width: 600px) and (max-width: 900px){
->>>>>>> samir82show-master
 
     div.logo-header{
         height: 90px;

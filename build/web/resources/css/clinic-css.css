@@ -45,15 +45,12 @@ and open the template in the editor.
 
 .clinic-name{
     background-color: inherit;
-<<<<<<< HEAD
     color: #00cc99;
 }
 div.item{
     margin-bottom: 15px;
-=======
     color: #64d86b;
     font-size: 28px;
->>>>>>> samir82show-master
 }
 
 div.hidden-div{
@@ -110,15 +107,9 @@ div.clnk-container{
 .appoinment-btn input[type='submit']{
     width: auto;
     height: 60px;
-<<<<<<< HEAD
     background-color: #00cc99;
     border: none;
     color: #000000;
-=======
-    background-color: #64d86b;
-    border: none;
-    color: black;
->>>>>>> samir82show-master
     cursor: pointer;
     text-align: center;
     margin: 5px;
@@ -241,8 +232,7 @@ div.clnk-container{
         height: 69px;
     }
 
-<<<<<<< HEAD
-=======
+
     .form-style{
         margin: 0 auto;
         display: inline-block;
@@ -266,7 +256,6 @@ div.clnk-container{
     .navbar{
         display: none;
     }
->>>>>>> samir82show-master
     div.item{
         display: none;
     }
@@ -332,18 +321,8 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 300px;
         height: 50px;
-<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
-=======
->>>>>>> samir82show-master
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        margin: 5px;
-        padding: 15px;
-        border-radius: 40px;
-
     }
     div.clinic-pic{
         display: flex;
@@ -445,10 +424,7 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> samir82show-master
 
     div.clnk-container{
         display: block;
@@ -507,17 +483,8 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 400px;
         height: 50px;
-<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
-=======
->>>>>>> samir82show-master
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        margin: 5px;
-        padding: 15px;
-        border-radius: 40px;
 
     }
     div.clinic-pic{
@@ -613,10 +580,6 @@ div.clnk-container{
     div.hidden-div{
         display: block;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> samir82show-master
 
     div.clnk-container{
         display: block;
@@ -675,17 +638,8 @@ div.clnk-container{
     .appoinment-btn input[type='submit']{
         width: 500px;
         height: 50px;
-<<<<<<< HEAD
         border: 2px solid #00cc99;
         color: #000000;
-=======
->>>>>>> samir82show-master
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        margin: 5px;
-        padding: 15px;
-        border-radius: 40px;
 
     }
 }

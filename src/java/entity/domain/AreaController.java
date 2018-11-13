@@ -185,7 +185,6 @@ public class AreaController implements Serializable {
     }
 
     public List<Area> findAreas() {
-//        System.out.println("findarea............... " + ejbFacade.findAll());
         return ejbFacade.findAreas();
     }
     

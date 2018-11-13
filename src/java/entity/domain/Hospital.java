@@ -32,6 +32,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Hospital.findByWorkingdayshours", query = "SELECT h FROM Hospital h WHERE h.workingdayshours = :workingdayshours")})
 public class Hospital implements Serializable {
 
+    @Size(max = 255)
+    @Column(name = "inarabic")
+    private String inarabic;
+    @Size(max = 255)
+    @Column(name = "workingdayshoursarabic")
+    private String workingdayshoursarabic;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -202,6 +209,22 @@ public class Hospital implements Serializable {
     @Override
     public String toString() {
         return "entity.domain.Hospital[ id=" + id + " ]";
+    }
+
+    public String getInarabic() {
+        return inarabic;
+    }
+
+    public void setInarabic(String inarabic) {
+        this.inarabic = inarabic;
+    }
+
+    public String getWorkingdayshoursarabic() {
+        return workingdayshoursarabic;
+    }
+
+    public void setWorkingdayshoursarabic(String workingdayshoursarabic) {
+        this.workingdayshoursarabic = workingdayshoursarabic;
     }
     
 }

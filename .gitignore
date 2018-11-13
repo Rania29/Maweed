@@ -1,2 +1,8 @@
 build/
+<<<<<<< HEAD
 dist/
+=======
+dist/
+/build/
+/dist/
+>>>>>>> ba49a8aeab7a7636fd2e5c1aec2217bbe2bdc32c

@@ -75,7 +75,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" value="#{c.inArabic}"/> 
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
+                                                       value="#{c.inArabic}"/> 
                                     </h:form>
                                 </li>
                             </c:forEach>

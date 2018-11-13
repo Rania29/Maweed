@@ -53,7 +53,7 @@
                         <h:form class="form-style">
                             <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
@@ -76,7 +76,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
                                     </h:form>
                                 </li>
                             </c:forEach>

@@ -23,6 +23,10 @@ div.result{
 h5{
     padding-left: 20px;
 }
+.cat-name{
+    color: #55A6D7; 
+    text-align: center;
+}
 .clnk-name{
     color: #55A6D7;
     font-size: 16px;

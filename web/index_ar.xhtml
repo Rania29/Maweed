@@ -57,10 +57,10 @@
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="ابحث باسم المستشفى" id="search"/>
-                            <h:commandLink value="بحث" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
-                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
+                            <h:link value="بحث" class="hidden-link1" outcome="search_ar"/>
+                            <h:link class="hidden-link" outcome="search_ar">
+                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="بحث"/>
+                            </h:link>
                         </h:form>
 
                     </div>
@@ -123,7 +123,7 @@
             <main >
                 <div class="cat"> 
                     <div class="cat-item">
-                        <a href="categories-xhtml/orthopedic.xhtml">
+                        <a href="category_ar.xhtml">
                             <img src="resources/images/stethoscope32.png" alt=""/><br />
                             <span>الباطنية</span></a>
                     </div>

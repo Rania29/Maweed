@@ -52,18 +52,22 @@
                     <div class="center-search">
                         <h:form class="form-style">
                             <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
                             </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name or service" id="search"/>
-                            <h:commandLink value="Search" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
+                            <h:inputText a:placeholder="Search by name" id="search"/>
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
+                            </h:link>
                         </h:form>
 
                     </div>
                 </div>
         </header><!--Header End-->
+        
         <nav class="navbar">
             <ul>
                 <li><a  href="index.xhtml">Home</a></li>

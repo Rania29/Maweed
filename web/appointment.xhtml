@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Request Appointment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <div>
+            <div class="top-div">
+                <div class="left-div">
+                    <a href="appointment_ar.xhtml">عربي</a>
+                    <a class="separator">|</a>
+                    <a href="index.xhtml">English</a>
+                </div>
+                <div class="right-div">
+                    <a href="signin.xhtml">Signin</a>
+                    <a class="separator">|</a>
+                    <a href="registration.xhtml">Register</a>
+                </div>
+            </div>
+            
+            <header class="header-top">
+                <div class="logo">
+                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                </div> 
+
+                <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
+                <nav id="myDropdown" class="menu">
+                    <a href="index.xhtml" class="item_menu">home</a>
+                    <a href="about.xhtml" class="item_menu">about</a>
+                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                    <a href="help.xhtml" class="item_menu">Help</a>
+                </nav>
+
+                <div class="search-box">
+                    <div class="center-search">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search"/>
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
+                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:link>
+                        </h:form>
+
+                    </div>
+                </div>
+            </header><!--Header End-->
+            
+            <div class="app_main">
+                <h2>Please fill this form,, we will call you back as soon as Possible </h2>
+            </div>
+        </div>
+    </h:body>
+</html>
+

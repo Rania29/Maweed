@@ -7,12 +7,9 @@
        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Maweed</title>
-        <link rel="shortcut icon" type="image/png" src="resources/images/logo.png"/>
-        <!--<link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon32.ico" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
-
         <script src="resources/javascript/hamburger_menu.js" type="text/javascript"></script>
         <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
 
@@ -61,10 +58,10 @@
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:commandLink value="Search" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
                                 <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
+                            </h:link>
                         </h:form>
 
                     </div>

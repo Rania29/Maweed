@@ -59,6 +59,9 @@ public class Appointment implements Serializable {
     @Size(max = 255)
     @Column(name = "name")
     private String name;
+    @Size(max = 255)
+    @Column(name = "inarabic")
+    private String inArabic;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "phone")
@@ -82,6 +85,14 @@ public class Appointment implements Serializable {
     private Shift morningoreveningId;
 
     public Appointment() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Appointment(Long id) {

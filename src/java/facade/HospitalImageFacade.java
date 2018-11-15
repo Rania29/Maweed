@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Groupauth;
+import entity.domain.HospitalImage;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class GroupauthFacade extends AbstractFacade<Groupauth> {
+public class HospitalImageFacade extends AbstractFacade<HospitalImage> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class GroupauthFacade extends AbstractFacade<Groupauth> {
         return em;
     }
 
-    public GroupauthFacade() {
-        super(Groupauth.class);
+    public HospitalImageFacade() {
+        super(HospitalImage.class);
     }
     
 }

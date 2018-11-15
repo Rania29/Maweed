@@ -1,26 +1,20 @@
 package entity.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Nooshi
- */
 @Entity
-@Table(name = "category")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
@@ -31,23 +25,21 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Category.findByInArabic", query = "SELECT c FROM Category c WHERE c.inArabic = :inArabic")})
 public class Category implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Size(max = 255)
-    @Column(name = "image")
-    private String image;
-    @Size(max = 255)
-    @Column(name = "name")
+
+    @Basic
     private String name;
 
+    @Basic
     private String inArabic;
 
-    @OneToMany(mappedBy = "categoryId")
-    private Collection<Clinic> clinicCollection;
+    @Basic
+    private String image;
+
+    @OneToMany(mappedBy = "category")
+    private List<Clinic> clinics;
 
     public Category() {
     }
@@ -60,58 +52,71 @@ public class Category implements Serializable {
         this.inArabic = inArabic;
     }
 
-    public Category(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Clinic> getClinicCollection() {
-        return clinicCollection;
+    public String getImage() {
+        return this.image;
     }
 
-    public void setClinicCollection(Collection<Clinic> clinicCollection) {
-        this.clinicCollection = clinicCollection;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<Clinic> getClinics() {
+        if (clinics == null) {
+            clinics = new ArrayList<>();
+        }
+        return this.clinics;
+    }
+
+    public void setClinics(List<Clinic> clinics) {
+        this.clinics = clinics;
+    }
+
+    public void addClinic(Clinic clinic) {
+        getClinics().add(clinic);
+        clinic.setCategory(this);
+    }
+
+    public void removeClinic(Clinic clinic) {
+        getClinics().remove(clinic);
+        clinic.setCategory(null);
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Category)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Category other = (Category) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -119,7 +124,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.domain.Category[ id=" + id + " ]";
+        return name;
     }
 
 }

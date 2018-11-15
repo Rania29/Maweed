@@ -2,8 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.GroupauthFacade;
-
+import facade.GroupAuthFacade;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -19,27 +18,27 @@ import javax.faces.model.SelectItem;
 
 @Named("groupauthController")
 @SessionScoped
-public class GroupauthController implements Serializable {
+public class GroupAuthController implements Serializable {
 
-    private Groupauth current;
+    private GroupAuth current;
     private DataModel items = null;
     @EJB
-    private facade.GroupauthFacade ejbFacade;
+    private facade.GroupAuthFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public GroupauthController() {
+    public GroupAuthController() {
     }
 
-    public Groupauth getSelected() {
+    public GroupAuth getSelected() {
         if (current == null) {
-            current = new Groupauth();
+            current = new GroupAuth();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private GroupauthFacade getFacade() {
+    private GroupAuthFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +66,13 @@ public class GroupauthController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Groupauth) getItems().getRowData();
+        current = (GroupAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Groupauth();
+        current = new GroupAuth();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +89,7 @@ public class GroupauthController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Groupauth) getItems().getRowData();
+        current = (GroupAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +106,7 @@ public class GroupauthController implements Serializable {
     }
 
     public String destroy() {
-        current = (Groupauth) getItems().getRowData();
+        current = (GroupAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,11 +186,11 @@ public class GroupauthController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Groupauth getGroupauth(java.lang.Long id) {
+    public GroupAuth getGroupauth(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Groupauth.class)
+    @FacesConverter(forClass = GroupAuth.class)
     public static class GroupauthControllerConverter implements Converter {
 
         @Override
@@ -199,7 +198,7 @@ public class GroupauthController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            GroupauthController controller = (GroupauthController) facesContext.getApplication().getELResolver().
+            GroupAuthController controller = (GroupAuthController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "groupauthController");
             return controller.getGroupauth(getKey(value));
         }
@@ -221,11 +220,11 @@ public class GroupauthController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Groupauth) {
-                Groupauth o = (Groupauth) object;
+            if (object instanceof GroupAuth) {
+                GroupAuth o = (GroupAuth) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Groupauth.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + GroupAuth.class.getName());
             }
         }
 

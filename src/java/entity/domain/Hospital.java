@@ -1,206 +1,215 @@
 package entity.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "hospital")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Hospital.findAll", query = "SELECT h FROM Hospital h")
-    , @NamedQuery(name = "Hospital.findById", query = "SELECT h FROM Hospital h WHERE h.id = :id")
-    , @NamedQuery(name = "Hospital.findByEmail", query = "SELECT h FROM Hospital h WHERE h.email = :email")
-    , @NamedQuery(name = "Hospital.findByLocationmap", query = "SELECT h FROM Hospital h WHERE h.locationmap = :locationmap")
-    , @NamedQuery(name = "Hospital.findByName", query = "SELECT h FROM Hospital h WHERE h.name = :name")
-    , @NamedQuery(name = "Hospital.findByPhoneno", query = "SELECT h FROM Hospital h WHERE h.phoneno = :phoneno")
-    , @NamedQuery(name = "Hospital.findByWorkingdayshours", query = "SELECT h FROM Hospital h WHERE h.workingdayshours = :workingdayshours")})
 public class Hospital implements Serializable {
 
-    @Size(max = 255)
-    @Column(name = "inarabic")
-    private String inarabic;
-    @Size(max = 255)
-    @Column(name = "workingdayshoursarabic")
-    private String workingdayshoursarabic;
-
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 255)
-    @Column(name = "email")
-    private String email;
-    @Size(max = 255)
-    @Column(name = "locationmap")
-    private String locationmap;
-    @Size(max = 255)
-    @Column(name = "name")
+
+    @Basic
     private String name;
-    @Size(max = 255)
-    @Column(name = "phoneno")
-    private String phoneno;
-    @Size(max = 255)
-    @Column(name = "workingdayshours")
-    private String workingdayshours;
-    @JoinTable(name = "insurance_hospital", joinColumns = {
-        @JoinColumn(name = "hospitals_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "insurances_id", referencedColumnName = "id")})
-    @ManyToMany
-    private Collection<Insurance> insuranceCollection;
-    @OneToMany(mappedBy = "hospitalId")
-    private Collection<Appointment> appointmentCollection;
-    @OneToMany(mappedBy = "hospitalId")
-    private Collection<Userauth> userauthCollection;
-    @OneToMany(mappedBy = "hospitalId")
-    private Collection<Hospitalimage> hospitalimageCollection;
-    @OneToMany(mappedBy = "hospitalId")
-    private Collection<Clinic> clinicCollection;
-    @JoinColumn(name = "area_id", referencedColumnName = "id")
+
+    @Basic
+    private String inArabic;
+
+    @Basic
+    private String phoneNo;
+
+    @Basic
+    private String email;
+
+    @Basic
+    private String locationMap;
+
+    @Basic
+    private String workingDaysHours;
+
+    @Basic
+    private String workingDaysHoursArabic;
+
     @ManyToOne
-    private Area areaId;
+    private Area area;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<Clinic> clinics;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<HospitalImage> hospitalImages;
+
+//    @ManyToMany(mappedBy = "hospitals")
+    @ManyToMany
+    private List<Insurance> insurances;
 
     public Hospital() {
     }
 
-    public Hospital(Long id) {
-        this.id = id;
+    public String getWorkingDaysHoursArabic() {
+        return workingDaysHoursArabic;
+    }
+
+    public void setWorkingDaysHoursArabic(String workingDaysHoursArabic) {
+        this.workingDaysHoursArabic = workingDaysHoursArabic;
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLocationmap() {
-        return locationmap;
-    }
-
-    public void setLocationmap(String locationmap) {
-        this.locationmap = locationmap;
-    }
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getPhoneno() {
-        return phoneno;
+    public String getPhoneNo() {
+        return this.phoneNo;
     }
 
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public String getWorkingdayshours() {
-        return workingdayshours;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setWorkingdayshours(String workingdayshours) {
-        this.workingdayshours = workingdayshours;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @XmlTransient
-    public Collection<Insurance> getInsuranceCollection() {
-        return insuranceCollection;
+    public String getLocationMap() {
+        return this.locationMap;
     }
 
-    public void setInsuranceCollection(Collection<Insurance> insuranceCollection) {
-        this.insuranceCollection = insuranceCollection;
+    public void setLocationMap(String locationMap) {
+        this.locationMap = locationMap;
     }
 
-    @XmlTransient
-    public Collection<Appointment> getAppointmentCollection() {
-        return appointmentCollection;
+    public String getWorkingDaysHours() {
+        return this.workingDaysHours;
     }
 
-    public void setAppointmentCollection(Collection<Appointment> appointmentCollection) {
-        this.appointmentCollection = appointmentCollection;
+    public void setWorkingDaysHours(String workingDaysHours) {
+        this.workingDaysHours = workingDaysHours;
     }
 
-    @XmlTransient
-    public Collection<Userauth> getUserauthCollection() {
-        return userauthCollection;
+    public Area getArea() {
+        return this.area;
     }
 
-    public void setUserauthCollection(Collection<Userauth> userauthCollection) {
-        this.userauthCollection = userauthCollection;
+    public void setArea(Area area) {
+        this.area = area;
     }
 
-    @XmlTransient
-    public Collection<Hospitalimage> getHospitalimageCollection() {
-        return hospitalimageCollection;
+    public List<Clinic> getClinics() {
+        if (clinics == null) {
+            clinics = new ArrayList<>();
+        }
+        return this.clinics;
     }
 
-    public void setHospitalimageCollection(Collection<Hospitalimage> hospitalimageCollection) {
-        this.hospitalimageCollection = hospitalimageCollection;
+    public void setClinics(List<Clinic> clinics) {
+        this.clinics = clinics;
     }
 
-    @XmlTransient
-    public Collection<Clinic> getClinicCollection() {
-        return clinicCollection;
+    public void addClinic(Clinic clinic) {
+        getClinics().add(clinic);
+        clinic.setHospital(this);
     }
 
-    public void setClinicCollection(Collection<Clinic> clinicCollection) {
-        this.clinicCollection = clinicCollection;
+    public void removeClinic(Clinic clinic) {
+        getClinics().remove(clinic);
+        clinic.setHospital(null);
     }
 
-    public Area getAreaId() {
-        return areaId;
+    public List<HospitalImage> getHospitalImages() {
+        if (hospitalImages == null) {
+            hospitalImages = new ArrayList<>();
+        }
+        return this.hospitalImages;
     }
 
-    public void setAreaId(Area areaId) {
-        this.areaId = areaId;
+    public void setHospitalImages(List<HospitalImage> hospitalImages) {
+        this.hospitalImages = hospitalImages;
+    }
+
+    public void addHospitalImage(HospitalImage hospitalImage) {
+        getHospitalImages().add(hospitalImage);
+        hospitalImage.setHospital(this);
+    }
+
+    public void removeHospitalImage(HospitalImage hospitalImage) {
+        getHospitalImages().remove(hospitalImage);
+        hospitalImage.setHospital(null);
+    }
+
+    public List<Insurance> getInsurances() {
+        if (insurances == null) {
+            insurances = new ArrayList<>();
+        }
+        return this.insurances;
+    }
+
+    public void setInsurances(List<Insurance> insurances) {
+        this.insurances = insurances;
+    }
+
+    public void addInsurance(Insurance insurance) {
+        getInsurances().add(insurance);
+    }
+
+    public void removeInsurance(Insurance insurance) {
+        getInsurances().remove(insurance);
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Hospital)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Hospital other = (Hospital) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hospital other = (Hospital) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -208,23 +217,7 @@ public class Hospital implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.domain.Hospital[ id=" + id + " ]";
+        return name;
     }
 
-    public String getInarabic() {
-        return inarabic;
-    }
-
-    public void setInarabic(String inarabic) {
-        this.inarabic = inarabic;
-    }
-
-    public String getWorkingdayshoursarabic() {
-        return workingdayshoursarabic;
-    }
-
-    public void setWorkingdayshoursarabic(String workingdayshoursarabic) {
-        this.workingdayshoursarabic = workingdayshoursarabic;
-    }
-    
 }

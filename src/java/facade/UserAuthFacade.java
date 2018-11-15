@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Servicelist;
+import entity.domain.UserAuth;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class ServicelistFacade extends AbstractFacade<Servicelist> {
+public class UserAuthFacade extends AbstractFacade<UserAuth> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ServicelistFacade extends AbstractFacade<Servicelist> {
         return em;
     }
 
-    public ServicelistFacade() {
-        super(Servicelist.class);
+    public UserAuthFacade() {
+        super(UserAuth.class);
     }
     
 }

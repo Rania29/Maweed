@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Hospitalimage;
+import entity.domain.ServiceList;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class HospitalimageFacade extends AbstractFacade<Hospitalimage> {
+public class ServiceListFacade extends AbstractFacade<ServiceList> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class HospitalimageFacade extends AbstractFacade<Hospitalimage> {
         return em;
     }
 
-    public HospitalimageFacade() {
-        super(Hospitalimage.class);
+    public ServiceListFacade() {
+        super(ServiceList.class);
     }
     
 }

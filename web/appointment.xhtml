@@ -9,6 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+            });
+        </script>
     </h:head>
     <h:body>
         <div>
@@ -47,7 +55,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
@@ -68,17 +76,15 @@
                 <h2>Please fill this form,, we will call you back as soon as Possible </h2>
                 <h:form>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_id}" for="id" />
-                        <h:inputText id="id" value="#{appointmentController.selected.id}" title="#{bundle.CreateAppointmentTitle_id}" />
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_name}" for="name" />
+                        <h:outputLabel value="Name: " for="name" />
                         <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.CreateAppointmentTitle_name}" />
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_inArabic}" for="inArabic" />
+                        <h:outputLabel value="Name (Arabic)" for="inArabic" />
                         <h:inputText id="inArabic" value="#{appointmentController.selected.inArabic}" title="#{bundle.CreateAppointmentTitle_inArabic}" />
                         <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone}" for="phone" />
                         <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.CreateAppointmentTitle_phone}" />
                         <h:outputLabel value="#{bundle.CreateAppointmentLabel_email}" for="email" />
                         <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.CreateAppointmentTitle_email}" />
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_DOB}" for="DOB" />
+                        <h:outputLabel value="Date of Birth: " for="DOB" />
                         <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                         </h:inputText>
@@ -89,19 +95,19 @@
                                            itemLabel="#{c.name}" 
                                            itemValue="#{c.id}" />
                         </h:selectManyListbox >
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_hospital}" for="hospital" />
+                        <h:outputLabel value="Hospital: " for="hospital" />
                         <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
                             <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_gender}" for="gender" />
+                        <h:outputLabel value="Gender: " for="gender" />
                         <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="#{bundle.CreateAppointmentTitle_gender}" >
                             <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                         </h:selectOneRadio>
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_morningOrEvening}" for="morningOrEvening" />
+                        <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
                         <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="#{bundle.CreateAppointmentTitle_morningOrEvening}" >
                             <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
                         </h:selectOneRadio>
-                        <h:outputLabel value="#{bundle.CreateAppointmentLabel_doctorGender}" for="doctorGender" />
+                        <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
                         <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="#{bundle.CreateAppointmentTitle_doctorGender}" >
                             <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                         </h:selectOneRadio>
@@ -109,11 +115,7 @@
                         <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="#{bundle.CreateAppointmentTitle_description}" />
                     </h:panelGrid>
                     <br />
-                    <h:commandLink action="#{appointmentController.create}" value="#{bundle.CreateAppointmentSaveLink}" />
-                    <br />
-                    <br />
-                    <h:commandLink action="#{appointmentController.prepareList}" value="#{bundle.CreateAppointmentShowAllLink}" immediate="true"/>
-                    <br />
+                    <h:commandLink action="#{appointmentController.create}" value="Send" />
                     <br />
                     <h:link outcome="/index" value="#{bundle.CreateAppointmentIndexLink}"/>
                 </h:form>

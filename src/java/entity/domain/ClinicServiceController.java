@@ -2,7 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.SequenceFacade;
+import facade.ClinicServiceFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -17,29 +17,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("sequenceController")
+@Named("clinicserviceController")
 @SessionScoped
-public class SequenceController implements Serializable {
+public class ClinicServiceController implements Serializable {
 
-    private Sequence current;
+    private ClinicService current;
     private DataModel items = null;
     @EJB
-    private facade.SequenceFacade ejbFacade;
+    private facade.ClinicServiceFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public SequenceController() {
+    public ClinicServiceController() {
     }
 
-    public Sequence getSelected() {
+    public ClinicService getSelected() {
         if (current == null) {
-            current = new Sequence();
+            current = new ClinicService();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private SequenceFacade getFacade() {
+    private ClinicServiceFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +67,13 @@ public class SequenceController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Sequence) getItems().getRowData();
+        current = (ClinicService) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Sequence();
+        current = new ClinicService();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -81,7 +81,7 @@ public class SequenceController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SequenceCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -90,7 +90,7 @@ public class SequenceController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Sequence) getItems().getRowData();
+        current = (ClinicService) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -98,7 +98,7 @@ public class SequenceController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SequenceUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -107,7 +107,7 @@ public class SequenceController implements Serializable {
     }
 
     public String destroy() {
-        current = (Sequence) getItems().getRowData();
+        current = (ClinicService) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -131,7 +131,7 @@ public class SequenceController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SequenceDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -187,30 +187,30 @@ public class SequenceController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Sequence getSequence(java.lang.String id) {
+    public ClinicService getClinicservice(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Sequence.class)
-    public static class SequenceControllerConverter implements Converter {
+    @FacesConverter(forClass = ClinicService.class)
+    public static class ClinicserviceControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            SequenceController controller = (SequenceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "sequenceController");
-            return controller.getSequence(getKey(value));
+            ClinicServiceController controller = (ClinicServiceController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "clinicserviceController");
+            return controller.getClinicservice(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = Long.valueOf(value);
             return key;
         }
 
-        String getStringKey(java.lang.String value) {
+        String getStringKey(java.lang.Long value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -221,11 +221,11 @@ public class SequenceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Sequence) {
-                Sequence o = (Sequence) object;
-                return getStringKey(o.getSeqName());
+            if (object instanceof ClinicService) {
+                ClinicService o = (ClinicService) object;
+                return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Sequence.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ClinicService.class.getName());
             }
         }
 

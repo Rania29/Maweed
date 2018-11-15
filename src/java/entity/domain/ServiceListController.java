@@ -2,8 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.ServicelistFacade;
-
+import facade.ServiceListFacade;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -19,27 +18,27 @@ import javax.faces.model.SelectItem;
 
 @Named("servicelistController")
 @SessionScoped
-public class ServicelistController implements Serializable {
+public class ServiceListController implements Serializable {
 
-    private Servicelist current;
+    private ServiceList current;
     private DataModel items = null;
     @EJB
-    private facade.ServicelistFacade ejbFacade;
+    private facade.ServiceListFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public ServicelistController() {
+    public ServiceListController() {
     }
 
-    public Servicelist getSelected() {
+    public ServiceList getSelected() {
         if (current == null) {
-            current = new Servicelist();
+            current = new ServiceList();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private ServicelistFacade getFacade() {
+    private ServiceListFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +66,13 @@ public class ServicelistController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Servicelist) getItems().getRowData();
+        current = (ServiceList) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Servicelist();
+        current = new ServiceList();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +89,7 @@ public class ServicelistController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Servicelist) getItems().getRowData();
+        current = (ServiceList) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +106,7 @@ public class ServicelistController implements Serializable {
     }
 
     public String destroy() {
-        current = (Servicelist) getItems().getRowData();
+        current = (ServiceList) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,11 +186,11 @@ public class ServicelistController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Servicelist getServicelist(java.lang.Long id) {
+    public ServiceList getServiceList(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Servicelist.class)
+    @FacesConverter(forClass = ServiceList.class)
     public static class ServicelistControllerConverter implements Converter {
 
         @Override
@@ -199,9 +198,9 @@ public class ServicelistController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ServicelistController controller = (ServicelistController) facesContext.getApplication().getELResolver().
+            ServiceListController controller = (ServiceListController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "servicelistController");
-            return controller.getServicelist(getKey(value));
+            return controller.getServiceList(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -221,11 +220,11 @@ public class ServicelistController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Servicelist) {
-                Servicelist o = (Servicelist) object;
+            if (object instanceof ServiceList) {
+                ServiceList o = (ServiceList) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Servicelist.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ServiceList.class.getName());
             }
         }
 

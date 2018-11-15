@@ -9,14 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Gender implements Serializable {
+public class DaysOfWeek implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    public Gender() {
-    }
 
     @Basic
     private String name;
@@ -24,12 +21,7 @@ public class Gender implements Serializable {
     @Basic
     private String inArabic;
 
-    public String getInArabic() {
-        return inArabic;
-    }
-
-    public void setInArabic(String inArabic) {
-        this.inArabic = inArabic;
+    public DaysOfWeek() {
     }
 
     public Long getId() {
@@ -38,6 +30,14 @@ public class Gender implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public String getName() {
@@ -50,9 +50,9 @@ public class Gender implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.name);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -67,7 +67,7 @@ public class Gender implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Gender other = (Gender) obj;
+        final DaysOfWeek other = (DaysOfWeek) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }

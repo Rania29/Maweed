@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Daysofweek;
+import entity.domain.HospitalRating;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class DaysofweekFacade extends AbstractFacade<Daysofweek> {
+public class HospitalRatingFacade extends AbstractFacade<HospitalRating> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class DaysofweekFacade extends AbstractFacade<Daysofweek> {
         return em;
     }
 
-    public DaysofweekFacade() {
-        super(Daysofweek.class);
+    public HospitalRatingFacade() {
+        super(HospitalRating.class);
     }
     
 }

@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -71,7 +70,7 @@ public class CategoryController implements Serializable {
         hospitals = new ArrayList<>();
         if (!clinics.isEmpty()) {
             for (Clinic o : clinics) {
-                hospitals.add(o.getHospitalId());
+                hospitals.add(o.getHospital());
             }
         }
         current = (Category) ejbFacade.findCatByName(name);
@@ -84,7 +83,7 @@ public class CategoryController implements Serializable {
         hospitals = new ArrayList<>();
         if (!clinics.isEmpty()) {
             for (Clinic o : clinics) {
-                hospitals.add(o.getHospitalId());
+                hospitals.add(o.getHospital());
             }
         }
         current = (Category) ejbFacade.findCatByName(name);

@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Sequence;
+import entity.domain.ClinicService;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class SequenceFacade extends AbstractFacade<Sequence> {
+public class ClinicServiceFacade extends AbstractFacade<ClinicService> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class SequenceFacade extends AbstractFacade<Sequence> {
         return em;
     }
 
-    public SequenceFacade() {
-        super(Sequence.class);
+    public ClinicServiceFacade() {
+        super(ClinicService.class);
     }
     
 }

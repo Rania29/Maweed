@@ -2,9 +2,9 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.ClinicserviceFacade;
-
+import facade.DaysOfWeekFacade;
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -17,29 +17,37 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("clinicserviceController")
+@Named("daysOfWeekController")
 @SessionScoped
-public class ClinicserviceController implements Serializable {
+public class DaysOfWeekController implements Serializable {
 
-    private Clinicservice current;
+    private List<DaysOfWeek> days;
+    private DaysOfWeek current;
     private DataModel items = null;
     @EJB
-    private facade.ClinicserviceFacade ejbFacade;
+    private facade.DaysOfWeekFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public ClinicserviceController() {
+    public DaysOfWeekController() {
     }
 
-    public Clinicservice getSelected() {
+    public List<DaysOfWeek> getDays() {
+        days = ejbFacade.findAll();
+        return days;
+    }
+    
+    
+    
+    public DaysOfWeek getSelected() {
         if (current == null) {
-            current = new Clinicservice();
+            current = new DaysOfWeek();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private ClinicserviceFacade getFacade() {
+    private DaysOfWeekFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +75,13 @@ public class ClinicserviceController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Clinicservice) getItems().getRowData();
+        current = (DaysOfWeek) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Clinicservice();
+        current = new DaysOfWeek();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -81,7 +89,7 @@ public class ClinicserviceController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DaysOfWeekCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -90,7 +98,7 @@ public class ClinicserviceController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Clinicservice) getItems().getRowData();
+        current = (DaysOfWeek) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -98,7 +106,7 @@ public class ClinicserviceController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DaysOfWeekUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -107,7 +115,7 @@ public class ClinicserviceController implements Serializable {
     }
 
     public String destroy() {
-        current = (Clinicservice) getItems().getRowData();
+        current = (DaysOfWeek) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -131,7 +139,7 @@ public class ClinicserviceController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicserviceDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DaysOfWeekDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -187,21 +195,21 @@ public class ClinicserviceController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Clinicservice getClinicservice(java.lang.Long id) {
+    public DaysOfWeek getDaysOfWeek(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Clinicservice.class)
-    public static class ClinicserviceControllerConverter implements Converter {
+    @FacesConverter(forClass = DaysOfWeek.class)
+    public static class DaysOfWeekControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ClinicserviceController controller = (ClinicserviceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "clinicserviceController");
-            return controller.getClinicservice(getKey(value));
+            DaysOfWeekController controller = (DaysOfWeekController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "daysOfWeekController");
+            return controller.getDaysOfWeek(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -221,11 +229,11 @@ public class ClinicserviceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Clinicservice) {
-                Clinicservice o = (Clinicservice) object;
+            if (object instanceof DaysOfWeek) {
+                DaysOfWeek o = (DaysOfWeek) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Clinicservice.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + DaysOfWeek.class.getName());
             }
         }
 

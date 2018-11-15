@@ -2,6 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
+import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
 import facade.DaysOfWeekFacade;
 import java.io.Serializable;
@@ -99,19 +100,16 @@ public class AppointmentController implements Serializable {
         return "Create";
     }
 
-//    public List<DaysOfWeek> findDays(Appointment appointment) {
-//        System.out.println("findDays.................. " + appointment);
-//        return appointment.getDaysOfWeeks();
-//    }
-    
     public String create() {
         for (String id : days) {
             DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
             current.addDaysOfWeek(daysOfWeek);
         }
         try {
+            current.setId(null);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
+            SendMail.sendMail("maweedqa@gmail.com", "qtrmaweed2018", "Appointment Request - " + current.getEmail(), current.getDescription(), current.getHospital().getEmail());
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));

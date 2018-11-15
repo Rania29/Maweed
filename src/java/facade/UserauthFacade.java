@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entity.domain.Userauth;
+import entity.domain.UserAuth;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sawad
  */
 @Stateless
-public class UserauthFacade extends AbstractFacade<Userauth> {
+public class UserAuthFacade extends AbstractFacade<UserAuth> {
 
     @PersistenceContext(unitName = "MaweedPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class UserauthFacade extends AbstractFacade<Userauth> {
         return em;
     }
 
-    public UserauthFacade() {
-        super(Userauth.class);
+    public UserAuthFacade() {
+        super(UserAuth.class);
     }
     
 }

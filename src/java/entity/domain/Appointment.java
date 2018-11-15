@@ -1,127 +1,92 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-/**
- *
- * @author Nooshi
- */
 @Entity
-@Table(name = "appointment")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Appointment.findAll", query = "SELECT a FROM Appointment a")
     , @NamedQuery(name = "Appointment.findById", query = "SELECT a FROM Appointment a WHERE a.id = :id")
-    , @NamedQuery(name = "Appointment.findByDob", query = "SELECT a FROM Appointment a WHERE a.dob = :dob")
+    , @NamedQuery(name = "Appointment.findByDob", query = "SELECT a FROM Appointment a WHERE a.DOB = :DOB")
     , @NamedQuery(name = "Appointment.findByDescription", query = "SELECT a FROM Appointment a WHERE a.description = :description")
     , @NamedQuery(name = "Appointment.findByEmail", query = "SELECT a FROM Appointment a WHERE a.email = :email")
     , @NamedQuery(name = "Appointment.findByName", query = "SELECT a FROM Appointment a WHERE a.name = :name")
     , @NamedQuery(name = "Appointment.findByPhone", query = "SELECT a FROM Appointment a WHERE a.phone = :phone")})
 public class Appointment implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Size(max = 255)
-    @Column(name = "dob")
-    private String dob;
-    @Size(max = 255)
-    @Column(name = "description")
-    private String description;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 255)
-    @Column(name = "email")
-    private String email;
-    @Size(max = 255)
-    @Column(name = "name")
+
+    @Basic
     private String name;
-    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(max = 255)
-    @Column(name = "phone")
+
+    @Basic
+    private String inArabic;
+
+    @Basic
     private String phone;
-    @JoinTable(name = "appointment_daysofweek", joinColumns = {
-        @JoinColumn(name = "appointment_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "daysofweeks_id", referencedColumnName = "id")})
+
+    @Basic
+    private String email;
+
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date DOB;
+
+    @Basic
+    private String description;
+
+    @ManyToOne
+    private Hospital hospital;
+
+    @ManyToOne
+    private Gender gender;
+
+    @ManyToOne
+    private Shift morningOrEvening;
+
+    @ManyToOne
+    private Gender doctorGender;
+
     @ManyToMany
-    private Collection<Daysofweek> daysofweekCollection;
-    @JoinColumn(name = "doctorgender_id", referencedColumnName = "id")
-    @ManyToOne
-    private Gender doctorgenderId;
-    @JoinColumn(name = "gender_id", referencedColumnName = "id")
-    @ManyToOne
-    private Gender genderId;
-    @JoinColumn(name = "hospital_id", referencedColumnName = "id")
-    @ManyToOne
-    private Hospital hospitalId;
-    @JoinColumn(name = "morningorevening_id", referencedColumnName = "id")
-    @ManyToOne
-    private Shift morningoreveningId;
+    private List<DaysOfWeek> daysOfWeeks;
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
+    }
 
     public Appointment() {
     }
 
-    public Appointment(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -129,77 +94,151 @@ public class Appointment implements Serializable {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    @XmlTransient
-    public Collection<Daysofweek> getDaysofweekCollection() {
-        return daysofweekCollection;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setDaysofweekCollection(Collection<Daysofweek> daysofweekCollection) {
-        this.daysofweekCollection = daysofweekCollection;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Gender getDoctorgenderId() {
-        return doctorgenderId;
+    public Date getDOB() {
+        return this.DOB;
     }
 
-    public void setDoctorgenderId(Gender doctorgenderId) {
-        this.doctorgenderId = doctorgenderId;
+    public void setDOB(Date DOB) {
+        this.DOB = DOB;
     }
 
-    public Gender getGenderId() {
-        return genderId;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setGenderId(Gender genderId) {
-        this.genderId = genderId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Hospital getHospitalId() {
-        return hospitalId;
+    public Hospital getHospital() {
+        return this.hospital;
     }
 
-    public void setHospitalId(Hospital hospitalId) {
-        this.hospitalId = hospitalId;
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
-    public Shift getMorningoreveningId() {
-        return morningoreveningId;
+    public Gender getGender() {
+        return this.gender;
     }
 
-    public void setMorningoreveningId(Shift morningoreveningId) {
-        this.morningoreveningId = morningoreveningId;
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Shift getMorningOrEvening() {
+        return this.morningOrEvening;
+    }
+
+    public void setMorningOrEvening(Shift morningOrEvening) {
+        this.morningOrEvening = morningOrEvening;
+    }
+
+    public Gender getDoctorGender() {
+        return this.doctorGender;
+    }
+
+    public void setDoctorGender(Gender doctorGender) {
+        this.doctorGender = doctorGender;
+    }
+
+    public List<DaysOfWeek> getDaysOfWeeks() {
+        if (daysOfWeeks == null) {
+            daysOfWeeks = new ArrayList<>();
+        }
+        return this.daysOfWeeks;
+    }
+
+    public void setDaysOfWeeks(List<DaysOfWeek> daysOfWeeks) {
+        this.daysOfWeeks = daysOfWeeks;
+    }
+
+    public void addDaysOfWeek(DaysOfWeek daysOfWeek) {
+        getDaysOfWeeks().add(daysOfWeek);
+    }
+
+    public void removeDaysOfWeek(DaysOfWeek daysOfWeek) {
+        getDaysOfWeeks().remove(daysOfWeek);
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + Objects.hashCode(this.phone);
+        hash = 17 * hash + Objects.hashCode(this.email);
+        hash = 17 * hash + Objects.hashCode(this.DOB);
+        hash = 17 * hash + Objects.hashCode(this.description);
+        hash = 17 * hash + Objects.hashCode(this.hospital);
+        hash = 17 * hash + Objects.hashCode(this.gender);
+        hash = 17 * hash + Objects.hashCode(this.morningOrEvening);
+        hash = 17 * hash + Objects.hashCode(this.doctorGender);
+        hash = 17 * hash + Objects.hashCode(this.daysOfWeeks);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Appointment)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Appointment other = (Appointment) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Appointment other = (Appointment) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.DOB, other.DOB)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospital, other.hospital)) {
+            return false;
+        }
+        if (!Objects.equals(this.gender, other.gender)) {
+            return false;
+        }
+        if (!Objects.equals(this.morningOrEvening, other.morningOrEvening)) {
+            return false;
+        }
+        if (!Objects.equals(this.doctorGender, other.doctorGender)) {
+            return false;
+        }
+        if (!Objects.equals(this.daysOfWeeks, other.daysOfWeeks)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "entity.domain.Appointment[ id=" + id + " ]";
-    }
-    
 }

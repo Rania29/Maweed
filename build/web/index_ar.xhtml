@@ -50,7 +50,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="المنطقه" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                                itemLabel="#{n}" 
@@ -75,7 +75,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" value="#{c.inArabic}"/> 
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
+                                                       value="#{c.inArabic}"/> 
                                     </h:form>
                                 </li>
                             </c:forEach>

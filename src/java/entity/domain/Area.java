@@ -1,65 +1,55 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Nooshi
- */
 @Entity
-@Table(name = "area")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a")
     , @NamedQuery(name = "Area.findById", query = "SELECT a FROM Area a WHERE a.id = :id")
     , @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")
     , @NamedQuery(name = "Area.findNameSorted", query = "SELECT a.name FROM Area a order by a.name")
-    , @NamedQuery(name = "Area.findArabicNameSorted", query = "SELECT a.inarabic FROM Area a order by a.inarabic")})
+    , @NamedQuery(name = "Area.findArabicNameSorted", query = "SELECT a.inArabic FROM Area a order by a.inArabic")})
 public class Area implements Serializable {
 
-    @Size(max = 255)
-    @Column(name = "inarabic")
-    private String inarabic;
-
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Size(max = 255)
-    @Column(name = "name")
+
+    @Basic
     private String name;
-    @OneToMany(mappedBy = "areaId")
-    private Collection<Hospital> hospitalCollection;
+
+    @Basic
+    private String inArabic;
+
+    @OneToMany(mappedBy = "area")
+    private List<Hospital> hospitals;
 
     public Area() {
     }
 
-    public Area(Long id) {
-        this.id = id;
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -67,48 +57,57 @@ public class Area implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Hospital> getHospitalCollection() {
-        return hospitalCollection;
+    public List<Hospital> getHospitals() {
+        if (hospitals == null) {
+            hospitals = new ArrayList<>();
+        }
+        return this.hospitals;
     }
 
-    public void setHospitalCollection(Collection<Hospital> hospitalCollection) {
-        this.hospitalCollection = hospitalCollection;
+    public void setHospitals(List<Hospital> hospitals) {
+        this.hospitals = hospitals;
+    }
+
+    public void addHospital(Hospital hospital) {
+        getHospitals().add(hospital);
+        hospital.setArea(this);
+    }
+
+    public void removeHospital(Hospital hospital) {
+        getHospitals().remove(hospital);
+        hospital.setArea(null);
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Area)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Area other = (Area) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Area other = (Area) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
-    }
-
-    public String getInarabic() {
-        return inarabic;
-    }
-
-    public void setInarabic(String inarabic) {
-        this.inarabic = inarabic;
     }
 
     @Override

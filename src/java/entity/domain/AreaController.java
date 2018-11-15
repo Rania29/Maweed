@@ -184,7 +184,7 @@ public class AreaController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
-    public List<Area> findAreaName() {
+    public List<Area> findAreas() {
         return ejbFacade.findAreas();
     }
     

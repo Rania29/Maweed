@@ -2,8 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.HospitalimageFacade;
-
+import facade.HospitalImageFacade;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -21,25 +20,25 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class HospitalimageController implements Serializable {
 
-    private Hospitalimage current;
+    private HospitalImage current;
     private DataModel items = null;
     @EJB
-    private facade.HospitalimageFacade ejbFacade;
+    private facade.HospitalImageFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public HospitalimageController() {
     }
 
-    public Hospitalimage getSelected() {
+    public HospitalImage getSelected() {
         if (current == null) {
-            current = new Hospitalimage();
+            current = new HospitalImage();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private HospitalimageFacade getFacade() {
+    private HospitalImageFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +66,13 @@ public class HospitalimageController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Hospitalimage) getItems().getRowData();
+        current = (HospitalImage) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Hospitalimage();
+        current = new HospitalImage();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +89,7 @@ public class HospitalimageController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Hospitalimage) getItems().getRowData();
+        current = (HospitalImage) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +106,7 @@ public class HospitalimageController implements Serializable {
     }
 
     public String destroy() {
-        current = (Hospitalimage) getItems().getRowData();
+        current = (HospitalImage) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,11 +186,11 @@ public class HospitalimageController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Hospitalimage getHospitalimage(java.lang.Long id) {
+    public HospitalImage getHospitalimage(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Hospitalimage.class)
+    @FacesConverter(forClass = HospitalImage.class)
     public static class HospitalimageControllerConverter implements Converter {
 
         @Override
@@ -221,11 +220,11 @@ public class HospitalimageController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Hospitalimage) {
-                Hospitalimage o = (Hospitalimage) object;
+            if (object instanceof HospitalImage) {
+                HospitalImage o = (HospitalImage) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Hospitalimage.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + HospitalImage.class.getName());
             }
         }
 

@@ -2,7 +2,7 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.UserauthFacade;
+import facade.UserAuthFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -21,25 +21,25 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class UserauthController implements Serializable {
 
-    private Userauth current;
+    private UserAuth current;
     private DataModel items = null;
     @EJB
-    private facade.UserauthFacade ejbFacade;
+    private facade.UserAuthFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public UserauthController() {
     }
 
-    public Userauth getSelected() {
+    public UserAuth getSelected() {
         if (current == null) {
-            current = new Userauth();
+            current = new UserAuth();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private UserauthFacade getFacade() {
+    private UserAuthFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +67,13 @@ public class UserauthController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Userauth();
+        current = new UserAuth();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class UserauthController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class UserauthController implements Serializable {
     }
 
     public String destroy() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,11 +187,11 @@ public class UserauthController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Userauth getUserauth(java.lang.Long id) {
+    public UserAuth getUserauth(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Userauth.class)
+    @FacesConverter(forClass = UserAuth.class)
     public static class UserauthControllerConverter implements Converter {
 
         @Override
@@ -221,11 +221,11 @@ public class UserauthController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Userauth) {
-                Userauth o = (Userauth) object;
+            if (object instanceof UserAuth) {
+                UserAuth o = (UserAuth) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Userauth.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + UserAuth.class.getName());
             }
         }
 

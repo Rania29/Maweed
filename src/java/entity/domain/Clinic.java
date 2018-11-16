@@ -13,12 +13,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author sawad
  */
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Clinic.findAll", query = "SELECT c FROM Clinic c")
+    , @NamedQuery(name = "Clinic.findById", query = "SELECT c FROM Clinic c WHERE c.id = :id")
+    , @NamedQuery(name = "Clinic.findByWorkingdayshours", query = "SELECT c FROM Clinic c WHERE c.workingDaysHours = :workingDaysHours")
+    , @NamedQuery(name = "Clinic.workingDaysHoursArabic", query = "SELECT c FROM Clinic c WHERE c.workingDaysHoursArabic = :workingDaysHoursArabic")
+    , @NamedQuery(name = "Clinic.findClinicByCat", query = "SELECT c FROM Clinic c WHERE c.category = :category")})
 public class Clinic implements Serializable {
 
     @Id

@@ -52,7 +52,7 @@
             <div class="search-box">
                 <div class="center-search">
                     <h:form class="form-style">
-                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                             <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                         <h:inputText a:placeholder="Search by name or service" id="search"/>
@@ -87,8 +87,8 @@
                         <div class="clnk-div">
                             <a href="#">
                                 <img src="resources/images/gulf.jpg" alt=""/><br />
-                                <span class="clnk-name">#{h.inarabic}</span><br />
-                                <span class="clnk-location">#{h.areaId.inarabic}</span><br />
+                                <span class="clnk-name">#{h.inArabic}</span><br />
+                                <span class="clnk-location">#{h.area.inArabic}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
                             </a>
                         </div>

@@ -29,10 +29,10 @@
         </div>
         <header class="header-top">
             <!--<div class="menu-icon">
-                <a href="index.xhtml"><img src="resources/images/menu.png"  alt=""/></a>
+                <a href="index.xhtml"><img src="resources/interface/menu.png"  alt=""/></a>
             </div>-->
             <div class="logo">
-                <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
             </div> 
             <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -58,7 +58,7 @@
                         <h:inputText a:placeholder="Search by name or service" id="search"/>
                         <h:commandLink value="Search" class="hidden-link1"/>
                         <h:commandLink class="hidden-link">
-                            <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                         </h:commandLink>
                     </h:form>
 
@@ -86,7 +86,7 @@
                     <c:forEach items="#{categoryController.hospitals}" var="h">
                         <div class="clnk-div">
                             <a href="#">
-                                <img src="resources/images/gulf.jpg" alt=""/><br />
+                                <img src="resources/interface/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.inArabic}</span><br />
                                 <span class="clnk-location">#{h.area.inArabic}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>

@@ -49,9 +49,9 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
@@ -81,7 +81,7 @@
             </nav><!--Navigation bar End-->
             <div>
                 <h1 class="clinic-name">
-                    Al-Gulf Dental Center
+                    #{appointmentController.hospital.name}
                 </h1>
             </div>
             <div class="item">
@@ -92,7 +92,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
-                            <span>Old Airport</span>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -101,7 +101,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -110,7 +110,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -119,15 +119,15 @@
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
-                            <span>sat-to-thur: 8Am-to-10PM</span>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
 
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.create()}" value="Request Appointment"/>
+                            </h:form>
                         </div>
                     </div>
 

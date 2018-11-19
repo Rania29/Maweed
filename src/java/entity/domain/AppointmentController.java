@@ -136,6 +136,10 @@ public class AppointmentController implements Serializable {
         }
     }
 
+    public String getAppointment() {
+        return "appointment.xhtml";
+    }
+    
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
         days.clear();

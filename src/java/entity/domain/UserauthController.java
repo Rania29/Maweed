@@ -1,10 +1,12 @@
 package entity.domain;
 
+import entity.domain.util.EncryptPassword;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.UserauthFacade;
-
+import entity.domain.util.SendMail;
+import facade.UserAuthFacade;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,25 +23,26 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class UserauthController implements Serializable {
 
-    private Userauth current;
+    private UserAuth current;
     private DataModel items = null;
     @EJB
-    private facade.UserauthFacade ejbFacade;
+    private facade.UserAuthFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String currentPage;
 
     public UserauthController() {
     }
 
-    public Userauth getSelected() {
+    public UserAuth getSelected() {
         if (current == null) {
-            current = new Userauth();
+            current = new UserAuth();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private UserauthFacade getFacade() {
+    private UserAuthFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,19 +70,32 @@ public class UserauthController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Userauth();
+        current = new UserAuth();
         selectedItemIndex = -1;
-        return "Create";
+        return "registration";
     }
 
-    public String create() {
+    public String findCurrentPage(String page) {
+        currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        return page;
+    }
+
+    public String backToCurrentPage() {
+        return currentPage ;
+    }
+
+    public String create() throws NoSuchAlgorithmException {
         try {
+            String body = "Nice to have you " + current.getName() + ",\n\nYour Password is: " + current.getPassword() + "\n\nThanks\nMaweed";
+            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Maweed-qa Password - " + current.getPassword(), body, current.getEmail());
+            current.setId(null);
+            current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserauthCreated"));
             return prepareCreate();
@@ -90,7 +106,7 @@ public class UserauthController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +123,7 @@ public class UserauthController implements Serializable {
     }
 
     public String destroy() {
-        current = (Userauth) getItems().getRowData();
+        current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,11 +203,11 @@ public class UserauthController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Userauth getUserauth(java.lang.Long id) {
+    public UserAuth getUserauth(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Userauth.class)
+    @FacesConverter(forClass = UserAuth.class)
     public static class UserauthControllerConverter implements Converter {
 
         @Override
@@ -221,11 +237,11 @@ public class UserauthController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Userauth) {
-                Userauth o = (Userauth) object;
+            if (object instanceof UserAuth) {
+                UserAuth o = (UserAuth) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Userauth.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + UserAuth.class.getName());
             }
         }
 

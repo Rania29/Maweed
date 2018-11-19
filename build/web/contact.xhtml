@@ -29,7 +29,7 @@
             </div>
             <header class="header-top">
                 <div class="logo">
-                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
 
                 <!--Hamburger button and menu-->
@@ -49,7 +49,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
@@ -58,7 +58,7 @@
                             <h:inputText a:placeholder="Search by name" id="search"/>
                             <h:link value="Search" class="hidden-link1" outcome="search"/>
                             <h:link class="hidden-link" outcome="search" >
-                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:link>
                         </h:form>
 
@@ -78,8 +78,7 @@
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            <div class="head">
-                <div>                 
+            <div class="head">                 
                     <div class="contact_form">
                         <div class="heading_div">
                             <h2>
@@ -104,7 +103,6 @@
                             <h:commandLink value="Cancle" class="contact_button cancle_button"/>
                         </h:form>
                     </div>
-                </div>
             </div>  
 
             <footer>

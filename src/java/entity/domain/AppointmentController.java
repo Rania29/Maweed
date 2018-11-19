@@ -2,10 +2,14 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
+import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
-
+import facade.DaysOfWeekFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -16,19 +20,55 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 
 @Named("appointmentController")
 @SessionScoped
 public class AppointmentController implements Serializable {
 
+    @Inject
+    private Guest guest;
+    @Inject
+    private Hospital hospital;
+    @EJB
+    private DaysOfWeekFacade daysOfWeekFacade;
+
+    private List<String> days;
     private Appointment current;
     private DataModel items = null;
     @EJB
     private facade.AppointmentFacade ejbFacade;
+
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
+    @PostConstruct
+    public void init() {
+        days = new ArrayList<>();
+    }
+
+    public String toClinic(Hospital hospital) {
+        this.hospital = hospital;
+        return "clinics";
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
     public AppointmentController() {
+    }
+
+    public List<String> getDays() {
+        return days;
+    }
+
+    public void setDays(List<String> days) {
+        this.days = days;
     }
 
     public Appointment getSelected() {
@@ -79,9 +119,16 @@ public class AppointmentController implements Serializable {
     }
 
     public String create() {
+        for (String id : days) {
+            DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
+            current.addDaysOfWeek(daysOfWeek);
+        }
         try {
+            current.setId(null);
+            current.setHospital(hospital);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
+            SendMail.sendMail("maweedqa@gmail.com", "qtrmaweed2018", "Appointment Request - " + current.getEmail(), current.getDescription(), current.getHospital().getEmail());
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -89,13 +136,26 @@ public class AppointmentController implements Serializable {
         }
     }
 
+    public String toAppointment() {
+        return "appointment.xhtml";
+    }
+    
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
+        days.clear();
+        for (DaysOfWeek d : current.getDaysOfWeeks()) {
+            days.add(d.getId().toString());
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
+        current.getDaysOfWeeks().clear();
+        for (String id : days) {
+            DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
+            current.addDaysOfWeek(daysOfWeek);
+        }
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentUpdated"));

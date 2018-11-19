@@ -30,7 +30,7 @@
             </div>
             <header class="header-top">
                 <div class="logo">
-                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -49,16 +49,16 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name" id="search"/>
                             <h:link value="Search" class="hidden-link1" outcome="search"/>
                             <h:link class="hidden-link" outcome="search" >
-                                <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:link>
                         </h:form>
 
@@ -81,53 +81,54 @@
             </nav><!--Navigation bar End-->
             <div>
                 <h1 class="clinic-name">
-                    Al-Gulf Dental Center
+                    #{appointmentController.hospital.name}
                 </h1>
             </div>
             <div class="item">
                 <div class="clnk-container">
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img src="resources/images/home32.png" alt=""/>
+                            <img src="resources/interface/home32.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
-                            <span>Old Airport</span>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img src="resources/images/call.png" alt=""/>
+                            <img src="resources/interface/call.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img class="centered" src="resources/images/phone.png" alt=""/>
+                            <img class="centered" src="resources/interface/phone.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img class="centered" src="resources/images/hours.png" alt=""/>
+                            <img class="centered" src="resources/interface/hours.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
-                            <span>sat-to-thur: 8Am-to-10PM</span>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
 
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" 
+                                               value="Request Appointment"/>
+                            </h:form>
                         </div>
                     </div>
 
@@ -137,7 +138,7 @@
                 <div class="clnk-container">
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img src="resources/images/home32.png" alt=""/>
+                            <img src="resources/interface/home32.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
@@ -146,7 +147,7 @@
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img src="resources/images/call.png" alt=""/>
+                            <img src="resources/interface/call.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
@@ -155,7 +156,7 @@
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img class="centered" src="resources/images/phone.png" alt=""/>
+                            <img class="centered" src="resources/interface/phone.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
@@ -164,7 +165,7 @@
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img class="centered" src="resources/images/hours.png" alt=""/>
+                            <img class="centered" src="resources/interface/hours.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
@@ -184,23 +185,23 @@
             <!--Slide show section-->
             <div class="slides_container" >
                 <a href="#">
-                    <img class="mySlides" src="resources/images/img1.jpg" style="height: 100%;width: 100%;"/>
+                    <img class="mySlides" src="resources/interface/img1.jpg" style="height: 100%;width: 100%;"/>
                 </a>
                 <a href="#">
-                    <img class="mySlides" src="resources/images/img2.jpg" style="height: 100%;width: 100%;"/>
+                    <img class="mySlides" src="resources/interface/img2.jpg" style="height: 100%;width: 100%;"/>
                 </a>
                 <a href="#">
-                    <img class="mySlides" src="resources/images/img3.jpg" style="height: 100%;width: 100%;"/>
+                    <img class="mySlides" src="resources/interface/img3.jpg" style="height: 100%;width: 100%;"/>
                 </a>
                 <a href="#">
-                    <img class="mySlides" src="resources/images/img4.jpg" style="height: 100%;width: 100%;"/>
+                    <img class="mySlides" src="resources/interface/img4.jpg" style="height: 100%;width: 100%;"/>
                 </a>
                 <div class="indecator_container" style="width:100%">
                     <div class="fl-left" onclick="plusDivs(-1)">
-                        <img src="resources/images/left-arrow32white.png" alt=""/>
+                        <img src="resources/interface/left-arrow32white.png" alt=""/>
                     </div>
                     <div class="fl-right" onclick="plusDivs(-1)">
-                        <img src="resources/images/right-arrow32white.png" alt=""/>
+                        <img src="resources/interface/right-arrow32white.png" alt=""/>
                     </div>
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
                     <span class="indecator demo" onclick="currentDiv(2)"></span>
@@ -219,13 +220,13 @@
             <ul>
                 <li>
                     <a href="clinic-services.xhtml">
-                        <img src="resources/images/default-dentist-3.jpg" alt="clinic-img"/>
+                        <img src="resources/interface/default-dentist-3.jpg" alt="clinic-img"/>
                         <span><br />Dental</span>
                     </a>
                 </li>
                 <li>
                     <a href="clinic-services.xhtml">
-                        <img src="resources/images/kids denstistry.jpg" alt="clinic-img"/>
+                        <img src="resources/interface/kids denstistry.jpg" alt="clinic-img"/>
                         <span><br />kids dentistry</span>
                     </a>
                 </li>
@@ -243,10 +244,10 @@
         </div>
         <div class="insurance">
             <ul>
-                <li><img src="resources/images/axa.jpg" alt="axa"/></li>
-                <li><img src="resources/images/next-care.png" alt="next-care"/></li>
-                <li><img src="resources/images/health360.png" alt="health360"/> </li>
-                <li><img src="resources/images/doha-bank.png" alt="doha-bank"/></li>
+                <li><img src="resources/interface/axa.jpg" alt="axa"/></li>
+                <li><img src="resources/interface/next-care.png" alt="next-care"/></li>
+                <li><img src="resources/interface/health360.png" alt="health360"/> </li>
+                <li><img src="resources/interface/doha-bank.png" alt="doha-bank"/></li>
             </ul>
         </div>
         <div>

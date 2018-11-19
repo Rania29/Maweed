@@ -29,7 +29,7 @@
         </div>
         <header class="header-top">
             <div class="logo">
-                <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
             </div> 
 
             <div class="container" onclick="myFunction(this)">
@@ -49,7 +49,7 @@
             <div class="search-box">
                 <div class="center-search">
                     <h:form class="form-style">
-                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                             <f:selectItem itemLabel="Area" itemValue=""/>
                             <f:selectItems value="#{areaController.findAreas()}" var="n"
                                            itemLabel="#{n}" 
@@ -58,7 +58,7 @@
                         <h:inputText a:placeholder="Search by name" id="search"/>
                         <h:link value="Search" class="hidden-link1" outcome="search"/>
                         <h:link class="hidden-link" outcome="search" >
-                            <img src="resources/images/magnifying-glass.png" class="search-icon" alt="search"/>
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                         </h:link>
                     </h:form>
 
@@ -92,12 +92,12 @@
                 <div class="result_items">
                     <c:forEach items="#{categoryController.hospitals}" var="h">
                         <div class="clnk-div">
-                            <a href="#">
-                                <img src="resources/images/gulf.jpg" alt=""/><br />
+                            <h:link outcome="#{appointmentController.toClinic (h)}">
+                                <img src="resources/interface/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.name}</span><br />
-                                <span class="clnk-location">#{h.areaId.name}</span><br />
+                                <span class="clnk-location">#{h.area.name}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
-                            </a>
+                            </h:link>
                         </div>
                     </c:forEach>
 

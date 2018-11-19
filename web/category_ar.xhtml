@@ -29,7 +29,7 @@
 
         <header class="header-top">
             <div class="logo">
-                <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
             </div> 
             <!--Hamburger button and menu-->
             <div class="container" onclick="myFunction(this)">
@@ -48,7 +48,7 @@
             <div class="search-box">
                 <div class="center-search">
                     <h:form class="form-style">
-                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                             <f:selectItem itemLabel="المنطقه" itemValue=""/>
                             <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                            itemLabel="#{n}" 
@@ -57,7 +57,7 @@
                         <h:inputText a:placeholder="ابحث باسم المستشفى" id="search"/>
                         <h:link value="بحث" class="hidden-link1" outcome="search_ar"/>
                         <h:link class="hidden-link" outcome="search_ar">
-                            <img src="resources/images/magnifying-glass.png" class="search-icon" alt="بحث"/>
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                         </h:link>
                     </h:form>
 
@@ -94,9 +94,9 @@
                         <c:forEach items="#{categoryController.hospitals}" var="h">
                             <div class="clnk-div">
                             <a href="#">
-                                <img src="resources/images/gulf.jpg" alt=""/><br />
+                                <img src="resources/interface/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.name}</span><br />
-                                <span class="clnk-location">#{h.areaId.name}</span><br />
+                                <span class="clnk-location">#{h.area.name}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
                             </a>
                                 </div>

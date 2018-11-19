@@ -39,11 +39,12 @@ public abstract class AbstractFacade<T> {
 
     public List<Clinic> findClinicByCat(Category cat) {
         return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
-                .setParameter("categoryId", cat)
+                .setParameter("category", cat)
                 .getResultList();
     }
 
     public List<T> findAll() {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();

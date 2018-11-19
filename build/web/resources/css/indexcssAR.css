@@ -273,24 +273,23 @@ div.center-search{
     color: #ffffff;
 }
 
+
 /*************************************Slide Show***************************************/
 .slides_container{
-    max-width:900px;
-    max-height: 500px !important;
+    max-width: 900px;
+    height: 500px !important;
     border: 1px solid #cccccc;
     background-color: inherit;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 15px;
     position: relative;
-    object-fit: cover;
 }
 
 .mySlides {
     display:none;
     max-height: 100%;
     max-width: 100%;
-    
 }
 
 .indecator_container{
@@ -325,6 +324,7 @@ div.center-search{
 .indecator:hover{
     background-color: white;
 }
+
 /************************************Slide show ends************************************/
 
 /*Headers Catigories**/
@@ -358,9 +358,13 @@ h1{
 .cat-item {
     display: inline-block;
     box-sizing: border-box;
-    margin : 0 2px;
-    padding: 8px;
-    text-align: center; 
+    /*margin : 0 2px;*/
+    padding: 8px 0px;
+    text-align: center;
+    width: 125px;
+    background-color: #e9eaea;
+    border-radius: 3px;
+    line-height: 18px;
 }
 
 .cat-item a{
@@ -368,12 +372,12 @@ h1{
     color: #013069; 
     font-size: 16px;
     font-weight: bold;
-    line-height: 18px;
+    
 
 }
-.cat-item a:hover {
-    color: #55A6D7;
-    text-decoration: underline ;
+.cat-item:hover {
+    background-color: #55A6D7;
+    /*text-decoration: underline ;*/
 }
 /**footer**/
 footer{
@@ -550,7 +554,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width: 100%;
-        max-height: 180px !important;
+        height: 200px !important;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
@@ -665,7 +669,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width:100%;
-        max-height: 250px;
+        height: 250px !important;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
@@ -772,7 +776,7 @@ div.lower-footer h2{
     .slides_container{
         clear: both;
         max-width:100%;
-        max-height: 350px;
+        height: 350px !important;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;

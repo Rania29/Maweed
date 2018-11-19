@@ -23,11 +23,10 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin.xhtml">Signin</a>
+                    <h:link outcome="signin.xhtml" value="Sign In"/>
                     <a class="separator">|</a>
-                    <a href="registration.xhtml">Register</a>
+                    <h:link outcome="#{userauthController.findCurrentPage('registration')}" value="Register"/>
                 </div>
-
             </div>
             <header class="header-top">
                 <div class="logo">

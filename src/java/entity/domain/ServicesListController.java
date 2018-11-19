@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 
 @Named("servicelistController")
 @SessionScoped
-public class ServiceListController implements Serializable {
+public class ServicesListController implements Serializable {
 
     private ServiceList current;
     private DataModel items = null;
@@ -27,7 +27,7 @@ public class ServiceListController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public ServiceListController() {
+    public ServicesListController() {
     }
 
     public ServiceList getSelected() {
@@ -198,7 +198,7 @@ public class ServiceListController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ServiceListController controller = (ServiceListController) facesContext.getApplication().getELResolver().
+            ServicesListController controller = (ServicesListController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "servicelistController");
             return controller.getServiceList(getKey(value));
         }

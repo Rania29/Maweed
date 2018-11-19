@@ -92,12 +92,12 @@
                 <div class="result_items">
                     <c:forEach items="#{categoryController.hospitals}" var="h">
                         <div class="clnk-div">
-                            <a href="#">
+                            <h:link outcome="#{appointmentController.toClinic (h)}">
                                 <img src="resources/interface/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.name}</span><br />
                                 <span class="clnk-location">#{h.area.name}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
-                            </a>
+                            </h:link>
                         </div>
                     </c:forEach>
 

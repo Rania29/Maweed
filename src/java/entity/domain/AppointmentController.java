@@ -20,11 +20,16 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 
 @Named("appointmentController")
 @SessionScoped
 public class AppointmentController implements Serializable {
 
+    @Inject
+    private Guest guest;
+    @Inject
+    private Hospital hospital;
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
 
@@ -40,6 +45,19 @@ public class AppointmentController implements Serializable {
     @PostConstruct
     public void init() {
         days = new ArrayList<>();
+    }
+
+    public String toClinic(Hospital hospital) {
+        this.hospital = hospital;
+        return "clinics";
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
     public AppointmentController() {
@@ -107,6 +125,7 @@ public class AppointmentController implements Serializable {
         }
         try {
             current.setId(null);
+            current.setHospital(hospital);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
             SendMail.sendMail("maweedqa@gmail.com", "qtrmaweed2018", "Appointment Request - " + current.getEmail(), current.getDescription(), current.getHospital().getEmail());
@@ -117,6 +136,10 @@ public class AppointmentController implements Serializable {
         }
     }
 
+    public String getAppointment() {
+        return "appointment.xhtml";
+    }
+    
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
         days.clear();

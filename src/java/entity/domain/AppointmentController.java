@@ -136,7 +136,7 @@ public class AppointmentController implements Serializable {
         }
     }
 
-    public String getAppointment() {
+    public String toAppointment() {
         return "appointment.xhtml";
     }
     

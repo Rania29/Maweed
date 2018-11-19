@@ -73,6 +73,7 @@ public class CategoryController implements Serializable {
                 hospitals.add(o.getHospital());
             }
         }
+//        System.out.println("toCategory.................... ");
         current = (Category) ejbFacade.findCatByName(name);
         return "category";
     }

@@ -13,7 +13,6 @@ public class SendMail {
 
     static public void sendMail(String senderEmail, String senderPassword, String title,
             String content, String receiverEmail) {
-        System.out.println("sendMail........................... " + receiverEmail);
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

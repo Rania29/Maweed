@@ -323,7 +323,7 @@ h1{
     color: #ffffff;
     background-color: #55A6D7;
     padding: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /**Ctigories style*/
@@ -350,8 +350,8 @@ h1{
     /*margin : 0 2px;*/
     padding: 8px 0px;
     text-align: center;
-    width: 122px;
-    background-color: #e9eaea;
+    width: 125px;
+    border: 2px solid #bde0f5;
     border-radius: 3px;
     line-height: normal;
 }
@@ -360,12 +360,11 @@ h1{
     text-decoration: none;
     color: #013069; 
     font-size: 15px;
-    font-weight: bold;
     
 }
 .cat-item:hover {
     /*text-decoration: underline;*/
-    background-color: #55A6D7;
+    background-color: #bde0f5;
 }
 /**footer**/
 footer{

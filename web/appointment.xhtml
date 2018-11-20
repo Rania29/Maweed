@@ -85,7 +85,7 @@
                             <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.CreateAppointmentTitle_name}" />
                             <h:outputLabel value="Name (Arabic)" for="inArabic" />
                             <h:inputText id="inArabic" value="#{appointmentController.selected.inArabic}" title="#{bundle.CreateAppointmentTitle_inArabic}" />
-                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone}" for="phone" />
+                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone} (+974)" for="phone" />
                             <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.CreateAppointmentTitle_phone}" />
                             <h:outputLabel value="#{bundle.CreateAppointmentLabel_email}" for="email" />
                             <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.CreateAppointmentTitle_email}" />
@@ -94,12 +94,12 @@
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:inputText>
                             <h:outputLabel value="Preferred Days: " for="days" />
-                            <h:selectManyListbox id="days" value="#{appointmentController.days}">
+                            <h:selectManyCheckbox id="days" value="#{appointmentController.days}">
                                 <f:selectItems value="#{daysOfWeekController.days}" 
                                                var="c"
                                                itemLabel="#{c.name}" 
                                                itemValue="#{c.id}" />
-                            </h:selectManyListbox >
+                            </h:selectManyCheckbox >
                             <h:outputLabel value="Hospital: " for="hospital" />
                             <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
                                 <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
@@ -122,7 +122,7 @@
                         <br />
                         <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>
                         <br />
-                        <h:link outcome="/Back" value="#{bundle.CreateAppointmentIndexLink}" class="app_button cancle_button"/>
+                        <h:link outcome="clinics" value="Hospital" class="app_button cancle_button"/>
                     </h:form>
                 </div>
 

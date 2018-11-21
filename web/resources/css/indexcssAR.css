@@ -362,7 +362,7 @@ h1{
     padding: 8px 0px;
     text-align: center;
     width: 125px;
-    background-color: #e9eaea;
+    border: 2px solid #bde0f5;
     border-radius: 3px;
     line-height: 18px;
 }
@@ -371,12 +371,11 @@ h1{
     text-decoration: none;
     color: #013069; 
     font-size: 16px;
-    font-weight: bold;
     
 
 }
 .cat-item:hover {
-    background-color: #55A6D7;
+    background-color: #bde0f5;
     /*text-decoration: underline ;*/
 }
 /**footer**/

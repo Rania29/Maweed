@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Clinics</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -122,16 +124,14 @@
                             <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
-
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
                                 <h:commandButton action="#{appointmentController.toAppointment()}" 
-                                               value="Request Appointment"/>
+                                                 value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="hidden-div">
@@ -223,11 +223,9 @@
                         <img src="resources/interface/default-dentist-3.jpg" alt="clinic-img"/>
                         <span><br />Dental</span>
                     </a>
-                </li>
-                <li>
                     <a href="clinic-services.xhtml">
-                        <img src="resources/interface/kids denstistry.jpg" alt="clinic-img"/>
-                        <span><br />kids dentistry</span>
+                        <img src="resources/interface/default-dentist-3.jpg" alt="clinic-img"/>
+                        <span><br />Dental</span>
                     </a>
                 </li>
             </ul>
@@ -244,10 +242,9 @@
         </div>
         <div class="insurance">
             <ul>
-                <li><img src="resources/interface/axa.jpg" alt="axa"/></li>
-                <li><img src="resources/interface/next-care.png" alt="next-care"/></li>
-                <li><img src="resources/interface/health360.png" alt="health360"/> </li>
-                <li><img src="resources/interface/doha-bank.png" alt="doha-bank"/></li>
+                <c:forEach items="#{appointmentController.hospital.insurances}" var="i">
+                    <li><img src="#{fn:substringAfter(i.image, '/')}" alt=""/></li>
+                </c:forEach>
             </ul>
         </div>
         <div>

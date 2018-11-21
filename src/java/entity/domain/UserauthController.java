@@ -81,7 +81,7 @@ public class UserauthController implements Serializable {
     public String prepareCreate() {
         current = new UserAuth();
         selectedItemIndex = -1;
-        return "registration";
+        return "/registration";
     }
 
     public String findCurrentPage(String page) {

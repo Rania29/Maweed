@@ -90,18 +90,18 @@
             <h2 class="cat-name">#{categoryController.current.name}</h2>
             <div class="result">
                 <div class="result_items">
-                    
-                        <c:forEach items="#{categoryController.hospitals}" var="h">
-                            <div class="clnk-div">
+
+                    <c:forEach items="#{categoryController.hospitals}" var="h">
+                        <div class="clnk-div">
                             <a href="#">
                                 <img src="resources/interface/gulf.jpg" alt=""/><br />
                                 <span class="clnk-name">#{h.name}</span><br />
                                 <span class="clnk-location">#{h.area.name}</span><br />
                                 <span class="clnk-star-rating">Star rating goes here</span>
                             </a>
-                                </div>
-                        </c:forEach>
-                    
+                        </div>
+                    </c:forEach>
+
                 </div>
             </div>
         </div>

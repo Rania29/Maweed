@@ -73,7 +73,14 @@
                     <li><a  href="index.xhtml">Home</a></li>
                     <li><a href="#" style="color: #445268">Categories</a>
                         <ul>
-                            <li><a href="categories-html/medical-care.xhtml">Medical Care</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </li>
                     <li><a  href="About.xhtml">About Us</a></li>
@@ -127,8 +134,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment()}" 
-                                                 value="Request Appointment"/>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
@@ -142,7 +148,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
-                            <span>Old Airport</span>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -151,7 +157,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -160,7 +166,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -169,13 +175,13 @@
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
-                            <span>sat-to-thur: 8Am-to-10PM</span>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
                     <div>
                         <div class="appoinment-btn">
                             <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt"/>
+                                <input type="submit" value="Request Appointment" name="req-apointmnt" action="#{appointmentController.toAppointment()}"/>
                             </form>
                         </div>
                     </div>
@@ -197,12 +203,12 @@
                     <img class="mySlides" src="resources/interface/img4.jpg" style="height: 100%;width: 100%;"/>
                 </a>
                 <div class="indecator_container" style="width:100%">
-                    <div class="fl-left" onclick="plusDivs(-1)">
+                    <!--<div class="fl-left" onclick="plusDivs(-1)">
                         <img src="resources/interface/left-arrow32white.png" alt=""/>
                     </div>
                     <div class="fl-right" onclick="plusDivs(-1)">
                         <img src="resources/interface/right-arrow32white.png" alt=""/>
-                    </div>
+                    </div>-->
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
                     <span class="indecator demo" onclick="currentDiv(2)"></span>
                     <span class="indecator demo" onclick="currentDiv(3)"></span>
@@ -216,17 +222,15 @@
         <div>
             <h1>Our Clinics</h1>
         </div>
-        <div class="clinic-pic">
-            <ul>
-                <li>
-                    <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
-                        <a href="clinic-services.xhtml">
-                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
-                            <span>#{i.category}</span>
-                        </a>
-                    </c:forEach>
-                </li>
-            </ul>
+        <div class="clinic">
+            <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
+                <div class="clinic-item">
+                    <a href="clinic-services.xhtml">
+                        <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                        <span>#{i.category}</span>
+                    </a>
+                </div>
+            </c:forEach>
         </div>
 
         <div>

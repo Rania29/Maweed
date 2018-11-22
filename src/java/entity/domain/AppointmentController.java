@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
 import facade.DaysOfWeekFacade;
+import facade.HospitalImageFacade;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -54,7 +55,7 @@ public class AppointmentController implements Serializable {
         this.hospital = hospital;
         return "clinics";
     }
-
+    
     public Hospital getHospital() {
         return hospital;
     }

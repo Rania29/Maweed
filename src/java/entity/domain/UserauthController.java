@@ -5,12 +5,15 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.UserAuthFacade;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.io.StringWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -78,7 +81,7 @@ public class UserauthController implements Serializable {
     public String prepareCreate() {
         current = new UserAuth();
         selectedItemIndex = -1;
-        return "registration";
+        return "/registration";
     }
 
     public String findCurrentPage(String page) {
@@ -87,20 +90,28 @@ public class UserauthController implements Serializable {
     }
 
     public String backToCurrentPage() {
-        return currentPage ;
+        return currentPage;
     }
 
     public String create() throws NoSuchAlgorithmException {
         try {
             String body = "Nice to have you " + current.getName() + ",\n\nYour Password is: " + current.getPassword() + "\n\nThanks\nMaweed";
-            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Maweed-qa Password - " + current.getPassword(), body, current.getEmail());
             current.setId(null);
             current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
             getFacade().create(current);
+            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Maweed Password - " + current.getName(), body, current.getEmail());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserauthCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String s = sw.toString();
+//            for(String line: s.split("\n")) {
+            if (s.contains("duplicate key value violates unique constraint")) {
+//                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("NonUniqueEmail"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "This email is already in use", null));
+            }
+//            }
             return null;
         }
     }

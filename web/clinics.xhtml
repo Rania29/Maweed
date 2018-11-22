@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Clinics</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -122,7 +124,6 @@
                             <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
-
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -131,7 +132,6 @@
                             </h:form>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="hidden-div">
@@ -216,42 +216,17 @@
         <div>
             <h1>Our Clinics</h1>
         </div>
-        <div class="clinic">
-            <div class="clinic-item">
-                <a href="clinic-services.xhtml">
-                    <img src="resources/interface/scalpel32.png" alt=""/><br />
-                    <span>Surgery</span></a>
-            </div>
-            <div class="clinic-item">
-                <a href="clinic-services.xhtml">
-                    <img src="resources/interface/pair-of-molars32.png" alt=""/><br />
-                    <span>Dentist</span></a>
-            </div>
-            <div class="clinic-item">
-                <a href="clinic-services.xhtml">
-                    <img src="resources/interface/glasses32.png" alt=""/><br />
-                    <span>Ophthalmology</span></a>
-            </div>
-            <!--<ul>
+        <div class="clinic-pic">
+            <ul>
                 <li>
-                    <a href="clinic-services.xhtml">
-                        <img src="resources/interface/pair-of-molars.png" alt="clinic-img"/>
-                        <span><br />Dental</span>
-                    </a>
+                    <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
+                        <a href="clinic-services.xhtml">
+                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                            <span>#{i.category}</span>
+                        </a>
+                    </c:forEach>
                 </li>
-                <li>
-                    <a href="clinic-services.xhtml">
-                        <img src="resources/interface/pair-of-molars.png" alt="clinic-img"/>
-                        <span><br />kids dentistry</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="clinic-services.xhtml">
-                        <img src="resources/interface/medical-tools.png" alt="clinic-img"/>
-                        <span><br />Surgery</span>
-                    </a>
-                </li>
-            </ul>-->
+            </ul>
         </div>
 
         <div>
@@ -265,10 +240,9 @@
         </div>
         <div class="insurance">
             <ul>
-                <li><img src="resources/interface/axa.jpg" alt="axa"/></li>
-                <li><img src="resources/interface/next-care.png" alt="next-care"/></li>
-                <li><img src="resources/interface/health360.png" alt="health360"/> </li>
-                <li><img src="resources/interface/doha-bank.png" alt="doha-bank"/></li>
+                <c:forEach items="#{appointmentController.hospital.insurances}" var="i">
+                    <li><img src="#{fn:substringAfter(i.image, '/')}" alt=""/></li>
+                </c:forEach>
             </ul>
         </div>
         <div>
@@ -298,4 +272,3 @@
         </footer>
     </h:body>
 </html>
-

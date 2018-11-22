@@ -6,6 +6,8 @@ import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
 import facade.DaysOfWeekFacade;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,6 +43,7 @@ public class AppointmentController implements Serializable {
 
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String item = "";
 
     @PostConstruct
     public void init() {
@@ -115,20 +118,34 @@ public class AppointmentController implements Serializable {
     public String prepareCreate() {
         current = new Appointment();
         selectedItemIndex = -1;
-        return "Create";
+        return "appointment";
     }
 
     public String create() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        item = "";
+        String dob = dateFormat.format(current.getDOB());
         for (String id : days) {
             DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
             current.addDaysOfWeek(daysOfWeek);
         }
         try {
+            current.getDaysOfWeeks().forEach(p -> item += p.getName() + ", ");
             current.setId(null);
             current.setHospital(hospital);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
-            SendMail.sendMail("maweedqa@gmail.com", "qtrmaweed2018", "Appointment Request - " + current.getEmail(), current.getDescription(), current.getHospital().getEmail());
+            String msg = "Name: " + current.getName() + "\n"
+                    + "Email: " + current.getEmail() + "\n"
+                    + "Name(Arabic): " + current.getInArabic() + "\n"
+                    + "Phone: " + current.getPhone() + "\n"
+                    + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
+                    + "Preferred Doctor: " + current.getDoctorGender().getName() + "\n"
+                    + "Gender: " + current.getGender().getName() + "\n"
+                    + "Preferred Days: " + item + "\n"
+                    + "Problem: : " + current.getDescription();
+            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, current.getHospital().getEmail());
+            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -139,7 +156,7 @@ public class AppointmentController implements Serializable {
     public String toAppointment() {
         return "appointment.xhtml";
     }
-    
+
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
         days.clear();

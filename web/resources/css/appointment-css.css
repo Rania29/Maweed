@@ -28,15 +28,14 @@ and open the template in the editor.
     color: #013069;
 }
 
-
-
 .contact_form {
     height: inherit;
     width: 100%;
     display: inline-block;
     text-align: left;
     border: 1px solid #013069;
-    padding: 0px 5px;
+    padding: 5px;
+    line-height: 40px;
 }
 
 .contact_form input[type=text], select, textarea {
@@ -48,6 +47,10 @@ and open the template in the editor.
     margin-bottom: 2px;
     resize: vertical;
     font-size: 14px;
+}
+.check_box{
+    float: left;
+    line-height: 20px;
 }
 
 .contact_form label{
@@ -66,6 +69,12 @@ and open the template in the editor.
 }
 .cancle_button{
     background-color: #00cc66;
+}
+div.cntr_btn{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /**Media Queries*/

@@ -29,18 +29,19 @@ h5{
 }
 .clnk-name{
     color: #55A6D7;
-    font-size: 16px;
+    font-size: 14px;
 
 }
 .clnk-location{
     color: #013069;
-    font-size: 15px;
+    font-size: 12px;
 }
 .clnk-star-rating{
      color: orange;
 }
 .clnk-div{
     display: inline-block;
+    width: auto;
     border: 1px solid #cccccc;
     background-color: #e8eaf2;
     margin: 10px;

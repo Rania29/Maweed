@@ -28,7 +28,6 @@ h5{
 .clnk-name{
     color: #55A6D7;
     font-size: 16px;
-
 }
 .clnk-location{
     color: #013069;
@@ -36,6 +35,7 @@ h5{
 }
 .clnk-star-rating{
      color: orange;
+     font-size: 12px;
 }
 .clnk-div{
     display: inline-block;
@@ -45,11 +45,12 @@ h5{
     padding: 5px;
     border-radius: 5px;
     line-height: 25px;
+    overflow-wrap: normal;
 }
 
 .clnk-div img{
-    width: 150px;
-    height: 100px;
+    width: 120px;
+    height: 80px;
     float: left;
     background-color: #FFFFFF;
 }

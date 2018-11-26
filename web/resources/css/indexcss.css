@@ -13,10 +13,12 @@ and open the template in the editor.
 }
 body, html{
     background-color: #F2F3F7;
-    background-repeat: no-repeat;
     min-width: 320px;
     width: auto !important;
     width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     font-family: arial, Helvetica, sans-serif; 
     line-height: 45px;
     direction: ltr;

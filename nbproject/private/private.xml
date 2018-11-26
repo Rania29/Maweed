@@ -2,6 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/D:/new%20project/Maweed/web/resources/css/indexcssAR.css</file>
             <file>file:/D:/new%20project/Maweed/web/category.xhtml</file>
@@ -10,5 +13,6 @@
             <file>file:/D:/new%20project/Maweed/web/resources/css/search-css.css</file>
             <file>file:/D:/new%20project/Maweed/web/resources/css/indexcss.css</file>
         </group>
+>>>>>>> 704cb4fc60da602c4971733981c46a8921c97b98
     </open-files>
 </project-private>

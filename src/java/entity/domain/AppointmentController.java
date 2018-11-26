@@ -138,7 +138,6 @@ public class AppointmentController implements Serializable {
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
             String msg = "Name: " + current.getName() + "\n"
                     + "Email: " + current.getEmail() + "\n"
-                    + "Name(Arabic): " + current.getInArabic() + "\n"
                     + "Phone: " + current.getPhone() + "\n"
                     + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
                     + "Preferred Doctor: " + current.getDoctorGender().getName() + "\n"

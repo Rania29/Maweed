@@ -75,7 +75,7 @@ public class CategoryController implements Serializable {
         }
 //        System.out.println("toCategory.................... ");
         current = (Category) ejbFacade.findCatByName(name);
-        return "category";
+        return "category?faces-redirect=true";
     }
     
     public String toCategoryArabic(Category category) {

@@ -77,6 +77,10 @@ public class HospitalimageController implements Serializable {
         return "Create";
     }
 
+    public String findFirstImage(Hospital hospital) {
+        return ((HospitalImage) (ejbFacade.findFirstImage(hospital))).getImage();
+    }
+
     public String create() {
         try {
             getFacade().create(current);

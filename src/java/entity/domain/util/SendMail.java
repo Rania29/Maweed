@@ -34,7 +34,8 @@ public class SendMail {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(receiverEmail));
             message.setSubject(title);
-            message.setText(content);
+            message.setContent(content, "text/plain; charset=UTF-8");
+//            message.setText(content);
 
             Transport.send(message);
 

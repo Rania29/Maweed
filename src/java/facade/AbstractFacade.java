@@ -2,6 +2,8 @@ package facade;
 
 import entity.domain.Category;
 import entity.domain.Clinic;
+import entity.domain.Hospital;
+import entity.domain.HospitalImage;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -31,13 +33,23 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
+    public Object findFirstImage(Hospital hospital) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager()
+                .createNamedQuery("HospitalImage.findByHospital")
+                .setParameter("hospital", hospital)
+                .getResultList().get(0);
+    }
+
     public Object findCatByName(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Category.findByName")
                 .setParameter("name", name)
                 .getSingleResult();
     }
 
     public List<Clinic> findClinicByCat(Category cat) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
                 .setParameter("category", cat)
                 .getResultList();
@@ -51,14 +63,17 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAreas() {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Area.findNameSorted").getResultList();
     }
 
     public List<T> findArabicAreas() {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Area.findArabicNameSorted").getResultList();
     }
 
     public List<T> findCategoriesSorted() {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Category.findAllSorted").getResultList();
     }
 

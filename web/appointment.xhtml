@@ -10,6 +10,16 @@
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/appointment-css.css" rel="stylesheet" type="text/css"/>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -92,12 +102,12 @@
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:inputText>
                             <h:outputLabel value="Preferred Days: " for="days" />
-                            <h:selectManyListbox id="days" value="#{appointmentController.days}">
+                            <h:selectManyCheckbox id="days" value="#{appointmentController.days}">
                                 <f:selectItems value="#{daysOfWeekController.days}" 
                                                var="c"
                                                itemLabel="#{c.name}" 
                                                itemValue="#{c.id}" />
-                            </h:selectManyListbox >
+                            </h:selectManyCheckbox >
                             <h:outputLabel value="Hospital: " for="hospital" />
                             <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
                                 <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
@@ -119,8 +129,7 @@
                         </h:panelGrid>
                         <br />
                         <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>
-                        <br />
-                        <h:link outcome="/Back" value="#{bundle.CreateAppointmentIndexLink}" class="app_button cancle_button"/>
+                        <h:link outcome="clinics" value="Back" class="app_button cancle_button"/>
                     </h:form>
                 </div>
 
@@ -149,4 +158,3 @@
         </div>
     </h:body>
 </html>
-
